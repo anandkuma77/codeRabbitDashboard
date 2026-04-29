@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeRabbit Adoption Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --red: #e74c3c;
+            --orange: #f39c12;
+            --green: #27ae60;
+            --blue: #2980b9;
+            --purple: #8e44ad;
+            --teal: #1abc9c;
+            --gray: #95a5a6;
+            --dark: #2c3e50;
+            --bg: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .date {
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            padding-left: 16px;
+            border-left: 4px solid var(--blue);
+        }
+
+        .section-sub {
+            color: var(--gray);
+            font-size: 0.95rem;
+            padding-left: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .kpi-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-card .label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .adoption-bar {
+            width: 100%;
+            height: 40px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            margin: 1.5rem 0;
+        }
+
+        .adoption-segment {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: white;
+        }
+
+        .callout {
+            padding: 1rem;
+            border-left: 4px solid;
+            border-radius: 4px;
+            background: #f8f9fa;
+            margin: 1rem 0;
+        }
+
+        .callout.success {
+            border-color: var(--green);
+            background: #d4edda;
+        }
+
+        .callout.warning {
+            border-color: var(--orange);
+            background: #fff3cd;
+        }
+
+        .callout.danger {
+            border-color: var(--red);
+            background: #f8d7da;
+        }
+
+        .callout.info {
+            border-color: var(--blue);
+            background: #d1ecf1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        thead {
+            background: var(--dark);
+            color: white;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        th {
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        th:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filters input, .filters select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .bar-chart {
+            margin: 1.5rem 0;
+        }
+
+        .bar-chart-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .bar-chart-label {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bar-chart-bar {
+            height: 24px;
+            background: var(--blue);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .top-list {
+            list-style: none;
+        }
+
+        .top-list li {
+            padding: 0.75rem;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rank {
+            font-weight: 700;
+            color: var(--gray);
+            margin-right: 0.5rem;
+        }
+
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .repo-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 4px solid var(--green);
+        }
+
+        .repo-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .repo-card .repo-stats {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        @media (max-width: 900px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CodeRabbit Adoption Dashboard</h1>
+        <div class="subtitle">GitHub Repositories: Config Files, Active PR Reviews, and Coverage Gaps</div>
+        <div class="date" id="last-updated">Last updated: Loading...</div>
+    </div>
+
+    <div class="container">
+        <!-- KPI Strip -->
+        <div class="kpi-strip">
+            <div class="kpi-card">
+                <div class="value" style="color: var(--blue);" id="kpi-total">-</div>
+                <div class="label">Total Repos</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value" style="color: var(--green);" id="kpi-active">-</div>
+                <div class="label">Active Repos</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value" style="color: var(--red);" id="kpi-none">-</div>
+                <div class="label">No CodeRabbit</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value" style="color: var(--orange);" id="kpi-firstpass">-</div>
+                <div class="label">CodeRabbit FirstPass</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value" style="color: var(--teal);" id="kpi-firstpass-pct">-%</div>
+                <div class="label">Bot-First Rate</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value" style="color: var(--purple);" id="kpi-config">-</div>
+                <div class="label">Have Config File</div>
+            </div>
+            <div class="kpi-card">
+                <div class="value" style="color: var(--gray);" id="kpi-prs">-</div>
+                <div class="label">Total PRs Reviewed</div>
+            </div>
+        </div>
+
+        <!-- Section 1: Overview -->
+        <h2>1. CodeRabbit Adoption Overview</h2>
+        <p class="section-sub">Repos with active PR reviews, config files, and adoption status breakdown</p>
+
+        <div class="card">
+            <h3>Adoption Breakdown</h3>
+            <div class="adoption-bar" id="adoption-bar"></div>
+            <div class="legend" id="adoption-legend"></div>
+        </div>
+
+        <div class="card">
+            <h3>How CodeRabbit Integrates with Repos</h3>
+            <div class="mermaid">
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#e8f4f8','primaryTextColor':'#2c3e50','primaryBorderColor':'#2980b9','lineColor':'#2980b9','secondaryColor':'#d4edda','tertiaryColor':'#fff3cd'}}}%%
+graph TB
+    subgraph " "
+        A[GitHub Repository]
+    end
+
+    A --> B{Has .coderabbit.yaml?}
+    B -->|Yes| C[Config File Present]
+    B -->|No| D[No Config File]
+
+    C --> E{CodeRabbit reviewing PRs?}
+    D --> F{CodeRabbit reviewing PRs?}
+
+    E -->|Yes| G[✓ Fully Active<br/>Config + Reviews]
+    E -->|No| H[⚠ Config, No Reviews<br/>Dormant/Disabled]
+
+    F -->|Yes| I[⚠ Reviewing, No Config<br/>Default Settings]
+    F -->|No| J[✗ Not Configured<br/>No Adoption]
+
+    style G fill:#27ae60,stroke:#27ae60,color:#fff
+    style H fill:#8e44ad,stroke:#8e44ad,color:#fff
+    style I fill:#1abc9c,stroke:#1abc9c,color:#fff
+    style J fill:#e74c3c,stroke:#e74c3c,color:#fff
+    style A fill:#2980b9,stroke:#2980b9,color:#fff
+    style C fill:#d4edda,stroke:#27ae60
+    style D fill:#f8d7da,stroke:#e74c3c
+            </div>
+        </div>
+
+        <div id="callouts-section"></div>
+
+        <!-- Section 2: Team & Domain -->
+        <h2>2. Adoption by Team & Domain</h2>
+        <p class="section-sub">Which teams and domains have CodeRabbit reviewing their PRs</p>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>By Team</h3>
+                <div class="bar-chart" id="team-chart"></div>
+            </div>
+            <div class="card">
+                <h3>By Domain</h3>
+                <div class="bar-chart" id="domain-chart"></div>
+            </div>
+        </div>
+
+        <!-- Section 3: Repository Status -->
+        <h2>3. Adoption by Repository Status</h2>
+        <p class="section-sub">Active, Maintenance, and Deprecated repos compared</p>
+
+        <div class="card">
+            <h3>CodeRabbit Coverage by Repo Status</h3>
+            <div class="bar-chart" id="status-chart"></div>
+        </div>
+
+        <div class="card">
+            <h3>Repositories by Status Distribution</h3>
+            <div id="status-pie-chart" class="mermaid"></div>
+        </div>
+
+        <!-- Section 3.5: Top Repositories -->
+        <h2>3.5. Top Repositories by CodeRabbit Activity</h2>
+        <p class="section-sub">Repositories leading in PR reviews and bot-first coverage</p>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>Most PRs Reviewed</h3>
+                <ul class="top-list" id="top-prs-list"></ul>
+            </div>
+            <div class="card">
+                <h3>Highest Bot-First Rate</h3>
+                <ul class="top-list" id="top-botfirst-list"></ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Fully Active Repositories</h3>
+            <div class="repo-grid" id="fully-active-grid"></div>
+        </div>
+
+        <!-- Section 4: Full Details -->
+        <h2>4. Full Repository Details</h2>
+        <p class="section-sub">All GitHub repos with CodeRabbit status, config file presence, and PR review activity</p>
+
+        <div class="card">
+            <div class="filters">
+                <input type="text" id="search-filter" placeholder="Search repositories...">
+                <select id="team-filter">
+                    <option value="">All Teams</option>
+                </select>
+                <select id="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="fully_active">Fully Active</option>
+                    <option value="reviewing_no_config">Reviewing, No Config</option>
+                    <option value="config_no_reviews">Config, No Reviews</option>
+                    <option value="not_configured">Not Configured</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th onclick="sortTable('name')">Repository</th>
+                        <th onclick="sortTable('team')">Team</th>
+                        <th onclick="sortTable('category')">Category</th>
+                        <th onclick="sortTable('has_config')">Config File</th>
+                        <th onclick="sortTable('coderabbit_pr_count')">PRs Reviewed</th>
+                        <th onclick="sortTable('coderabbit_first_review_count')">Bot-First</th>
+                        <th onclick="sortTable('coderabbit_first_review_pct')">Bot-First %</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody id="repo-tbody"></tbody>
+            </table>
+        </div>
+
+        <!-- Section 5: Bottom Line -->
+        <h2>5. The Bottom Line</h2>
+        <p class="section-sub">Key findings and recommended actions</p>
+
+        <div class="grid-3" id="bottom-line"></div>
+    </div>
+
+    <div class="footer">
+        <p>CodeRabbit Adoption Dashboard | Generated <span id="footer-date"></span> | Data: data/coderabbit-status.json</p>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            securityLevel: 'loose'
+        });
+
+        let dashboardData = null;
+        let allRepos = [];
+        let currentSort = { field: null, ascending: true };
+
+        // Load data
+        fetch('data/coderabbit-status.json')
+            .then(response => {
+                console.log('Fetch response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Data loaded successfully:', data.total, 'repos');
+                console.log('First repo:', data.repos[0]);
+                dashboardData = data;
+                allRepos = data.repos;
+                renderDashboard();
+            })
+            .catch(error => {
+                console.error('Error loading dashboard data:', error);
+                document.getElementById('repo-tbody').innerHTML =
+                    '<tr><td colspan="8" style="text-align:center;color:var(--red);">Error loading data: ' + error.message + '</td></tr>';
+                document.getElementById('status-chart').innerHTML =
+                    '<div style="color:var(--red);padding:2rem;text-align:center;">Error loading data: ' + error.message + '</div>';
+            });
+
+        function renderDashboard() {
+            // Update header date
+            const lastUpdated = dashboardData.last_updated
+                ? new Date(dashboardData.last_updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+                : 'Not yet updated';
+            document.getElementById('last-updated').textContent = 'Last updated: ' + lastUpdated;
+            document.getElementById('footer-date').textContent = lastUpdated;
+
+            // Update KPIs
+            document.getElementById('kpi-total').textContent = dashboardData.total;
+            document.getElementById('kpi-active').textContent = dashboardData.fully_active;
+            document.getElementById('kpi-none').textContent = dashboardData.not_configured;
+            document.getElementById('kpi-firstpass').textContent = dashboardData.total_coderabbit_first_reviews;
+            document.getElementById('kpi-firstpass-pct').textContent = dashboardData.coderabbit_first_review_pct.toFixed(1) + '%';
+            document.getElementById('kpi-config').textContent = dashboardData.has_config_total;
+            document.getElementById('kpi-prs').textContent = dashboardData.total_prs_reviewed;
+
+            // Render adoption bar
+            renderAdoptionBar();
+
+            // Render charts
+            renderTeamChart();
+            renderDomainChart();
+            renderStatusChart(allRepos);
+
+            // Render top lists
+            renderTopLists();
+
+            // Render fully active repos
+            renderFullyActiveRepos();
+
+            // Render table
+            renderRepoTable(allRepos);
+
+            // Populate filters
+            populateFilters();
+
+            // Render callouts
+            renderCallouts();
+
+            // Render bottom line
+            renderBottomLine();
+        }
+
+        function renderAdoptionBar() {
+            const total = dashboardData.total;
+            const bar = document.getElementById('adoption-bar');
+            const legend = document.getElementById('adoption-legend');
+
+            const segments = [
+                { count: dashboardData.fully_active, color: 'var(--green)', label: 'Fully Active' },
+                { count: dashboardData.reviewing_no_config, color: 'var(--teal)', label: 'Reviewing, No Config' },
+                { count: dashboardData.config_no_reviews, color: 'var(--purple)', label: 'Config, No Reviews' },
+                { count: dashboardData.not_configured, color: 'var(--red)', label: 'Not Configured' }
+            ];
+
+            bar.innerHTML = segments.map(s =>
+                `<div class="adoption-segment" style="width: ${(s.count/total*100).toFixed(1)}%; background: ${s.color};"></div>`
+            ).join('');
+
+            legend.innerHTML = segments.map(s => `
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: ${s.color};"></div>
+                    <span>${s.label}: ${s.count} (${(s.count/total*100).toFixed(1)}%)</span>
+                </div>
+            `).join('');
+        }
+
+        function renderTeamChart() {
+            const teams = {};
+            allRepos.forEach(r => {
+                if (!teams[r.team]) teams[r.team] = { total: 0, active: 0 };
+                teams[r.team].total++;
+                if (r.has_coderabbit_reviews) teams[r.team].active++;
+            });
+
+            const sorted = Object.entries(teams).sort((a, b) => b[1].active - a[1].active);
+            const maxCount = Math.max(...sorted.map(t => t[1].total));
+
+            document.getElementById('team-chart').innerHTML = sorted.map(([team, data]) => `
+                <div class="bar-chart-item">
+                    <div class="bar-chart-label">
+                        <span>${team}</span>
+                        <span>${data.active} / ${data.total}</span>
+                    </div>
+                    <div class="bar-chart-bar" style="width: ${(data.active/maxCount*100).toFixed(1)}%;"></div>
+                </div>
+            `).join('');
+        }
+
+        function renderDomainChart() {
+            const domains = {};
+            allRepos.forEach(r => {
+                const domain = r.domain || 'None';
+                if (!domains[domain]) domains[domain] = { total: 0, active: 0 };
+                domains[domain].total++;
+                if (r.has_coderabbit_reviews) domains[domain].active++;
+            });
+
+            const sorted = Object.entries(domains).sort((a, b) => b[1].active - a[1].active).slice(0, 10);
+            const maxCount = Math.max(...sorted.map(d => d[1].total));
+
+            document.getElementById('domain-chart').innerHTML = sorted.map(([domain, data]) => `
+                <div class="bar-chart-item">
+                    <div class="bar-chart-label">
+                        <span>${domain}</span>
+                        <span>${data.active} / ${data.total}</span>
+                    </div>
+                    <div class="bar-chart-bar" style="width: ${(data.active/maxCount*100).toFixed(1)}%;"></div>
+                </div>
+            `).join('');
+        }
+
+        function renderStatusChart(repos) {
+            console.log('renderStatusChart called with', repos.length, 'repos');
+            const statuses = { Active: 0, Maintenance: 0, Deprecated: 0 };
+            repos.forEach(r => {
+                if (statuses[r.status] !== undefined) statuses[r.status]++;
+            });
+
+            const maxCount = Math.max(...Object.values(statuses));
+
+            document.getElementById('status-chart').innerHTML = Object.entries(statuses).map(([status, count]) => `
+                <div class="bar-chart-item">
+                    <div class="bar-chart-label">
+                        <span>${status}</span>
+                        <span>${count} repos</span>
+                    </div>
+                    <div class="bar-chart-bar" style="width: ${(count/maxCount*100).toFixed(1)}%;"></div>
+                </div>
+            `).join('');
+
+            // Generate pie chart dynamically
+            const pieChart = document.getElementById('status-pie-chart');
+            const mermaidCode = `%%{init: {'theme':'base'}}%%
+pie title Repositories by Status
+    "Active" : ${statuses.Active}
+    "Maintenance" : ${statuses.Maintenance}
+    "Deprecated" : ${statuses.Deprecated}`;
+            pieChart.textContent = mermaidCode;
+            pieChart.removeAttribute('data-processed');
+            mermaid.init(undefined, pieChart);
+        }
+
+        function renderTopLists() {
+            // Top PRs
+            const topPRs = [...allRepos]
+                .filter(r => r.coderabbit_pr_count > 0)
+                .sort((a, b) => b.coderabbit_pr_count - a.coderabbit_pr_count)
+                .slice(0, 10);
+
+            document.getElementById('top-prs-list').innerHTML = topPRs.map((r, i) => `
+                <li>
+                    <span><span class="rank">${i + 1}.</span> <a href="${r.url}" target="_blank">${r.name}</a></span>
+                    <span style="font-weight: 600;">${r.coderabbit_pr_count} PRs</span>
+                </li>
+            `).join('') || '<li>No data available</li>';
+
+            // Top Bot-First
+            const topBotFirst = [...allRepos]
+                .filter(r => r.coderabbit_pr_count >= 5)
+                .sort((a, b) => b.coderabbit_first_review_pct - a.coderabbit_first_review_pct)
+                .slice(0, 10);
+
+            document.getElementById('top-botfirst-list').innerHTML = topBotFirst.map((r, i) => `
+                <li>
+                    <span><span class="rank">${i + 1}.</span> <a href="${r.url}" target="_blank">${r.name}</a></span>
+                    <span style="font-weight: 600;">${r.coderabbit_first_review_pct.toFixed(1)}%</span>
+                </li>
+            `).join('') || '<li>No data available</li>';
+        }
+
+        function renderFullyActiveRepos() {
+            const fullyActive = allRepos.filter(r => r.category === 'fully_active');
+
+            document.getElementById('fully-active-grid').innerHTML = fullyActive.map(r => `
+                <div class="repo-card">
+                    <h4><a href="${r.url}" target="_blank">${r.name}</a></h4>
+                    <div class="repo-stats">
+                        Team: ${r.team}<br>
+                        ${r.coderabbit_pr_count} PRs | ${r.coderabbit_first_review_pct.toFixed(1)}% bot-first
+                    </div>
+                </div>
+            `).join('') || '<p>No fully active repositories yet.</p>';
+        }
+
+        function renderRepoTable(repos) {
+            console.log('renderRepoTable called with', repos.length, 'repos');
+
+            const categoryColors = {
+                fully_active: 'var(--green)',
+                reviewing_no_config: 'var(--teal)',
+                config_no_reviews: 'var(--purple)',
+                not_configured: 'var(--red)'
+            };
+
+            const categoryLabels = {
+                fully_active: 'Fully Active',
+                reviewing_no_config: 'Reviewing, No Config',
+                config_no_reviews: 'Config, No Reviews',
+                not_configured: 'Not Configured'
+            };
+
+            document.getElementById('repo-tbody').innerHTML = repos.map(r => `
+                <tr>
+                    <td><a href="${r.url}" target="_blank">${r.name}</a></td>
+                    <td>${r.team}</td>
+                    <td><span class="badge" style="background: ${categoryColors[r.category]};">${categoryLabels[r.category]}</span></td>
+                    <td>${r.has_config ? '✓ ' + (r.config_file || '.coderabbit.yaml') : '✗'}</td>
+                    <td>${r.coderabbit_pr_count}</td>
+                    <td>${r.coderabbit_first_review_count}</td>
+                    <td>${r.coderabbit_first_review_pct.toFixed(1)}%</td>
+                    <td><a href="${r.url}" target="_blank">View</a></td>
+                </tr>
+            `).join('');
+
+            console.log('Table rendered with', repos.length, 'rows');
+        }
+
+        function populateFilters() {
+            const teams = [...new Set(allRepos.map(r => r.team))].sort();
+            document.getElementById('team-filter').innerHTML =
+                '<option value="">All Teams</option>' +
+                teams.map(t => `<option value="${t}">${t}</option>`).join('');
+
+            // Add event listeners
+            document.getElementById('search-filter').addEventListener('input', applyFilters);
+            document.getElementById('team-filter').addEventListener('change', applyFilters);
+            document.getElementById('category-filter').addEventListener('change', applyFilters);
+        }
+
+        function applyFilters() {
+            const search = document.getElementById('search-filter').value.toLowerCase();
+            const team = document.getElementById('team-filter').value;
+            const category = document.getElementById('category-filter').value;
+
+            const filtered = allRepos.filter(r => {
+                const matchSearch = !search || r.name.toLowerCase().includes(search) || r.repo.toLowerCase().includes(search);
+                const matchTeam = !team || r.team === team;
+                const matchCategory = !category || r.category === category;
+                return matchSearch && matchTeam && matchCategory;
+            });
+
+            renderRepoTable(filtered);
+        }
+
+        function sortTable(field) {
+            if (currentSort.field === field) {
+                currentSort.ascending = !currentSort.ascending;
+            } else {
+                currentSort.field = field;
+                currentSort.ascending = true;
+            }
+
+            allRepos.sort((a, b) => {
+                let valA = a[field];
+                let valB = b[field];
+
+                if (typeof valA === 'string') {
+                    valA = valA.toLowerCase();
+                    valB = valB.toLowerCase();
+                }
+
+                if (valA < valB) return currentSort.ascending ? -1 : 1;
+                if (valA > valB) return currentSort.ascending ? 1 : -1;
+                return 0;
+            });
+
+            applyFilters();
+        }
+
+        function renderCallouts() {
+            const callouts = [];
+
+            if (dashboardData.fully_active > 0) {
+                callouts.push(`
+                    <div class="callout success">
+                        <strong>✓ Success:</strong> ${dashboardData.fully_active} repositories are fully active with both config files and active PR reviews.
+                    </div>
+                `);
+            }
+
+            if (dashboardData.reviewing_no_config > 0) {
+                callouts.push(`
+                    <div class="callout warning">
+                        <strong>⚠ Attention:</strong> ${dashboardData.reviewing_no_config} repositories have CodeRabbit reviewing PRs but no config file. Consider adding .coderabbit.yaml for customization.
+                    </div>
+                `);
+            }
+
+            if (dashboardData.not_configured > dashboardData.total / 2) {
+                callouts.push(`
+                    <div class="callout danger">
+                        <strong>✗ Critical:</strong> ${dashboardData.not_configured} repositories (${(dashboardData.not_configured / dashboardData.total * 100).toFixed(1)}%) have no CodeRabbit presence at all.
+                    </div>
+                `);
+            }
+
+            if (dashboardData.coderabbit_first_review_pct > 50) {
+                callouts.push(`
+                    <div class="callout info">
+                        <strong>ℹ Info:</strong> CodeRabbit provides the first review on ${dashboardData.coderabbit_first_review_pct.toFixed(1)}% of PRs, demonstrating strong bot-first adoption.
+                    </div>
+                `);
+            }
+
+            document.getElementById('callouts-section').innerHTML = callouts.join('');
+        }
+
+        function renderBottomLine() {
+            const adoptionRate = ((dashboardData.has_reviews_total / dashboardData.total) * 100).toFixed(1);
+            const configRate = ((dashboardData.has_config_total / dashboardData.total) * 100).toFixed(1);
+
+            document.getElementById('bottom-line').innerHTML = `
+                <div class="callout ${adoptionRate > 75 ? 'success' : adoptionRate > 50 ? 'warning' : 'danger'}">
+                    <h3>📊 Adoption Rate</h3>
+                    <p><strong>${dashboardData.has_reviews_total} of ${dashboardData.total}</strong> repositories (${adoptionRate}%) have CodeRabbit actively reviewing PRs.</p>
+                </div>
+                <div class="callout ${configRate > 50 ? 'success' : 'warning'}">
+                    <h3>⚙️ Configuration</h3>
+                    <p><strong>${dashboardData.has_config_total} of ${dashboardData.total}</strong> repositories (${configRate}%) have a .coderabbit.yaml config file.</p>
+                </div>
+                <div class="callout ${dashboardData.not_configured === 0 ? 'success' : dashboardData.not_configured < dashboardData.total / 2 ? 'warning' : 'danger'}">
+                    <h3>🎯 Next Steps</h3>
+                    <p><strong>${dashboardData.not_configured}</strong> repositories need CodeRabbit onboarding. Focus on high-activity repos first.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
