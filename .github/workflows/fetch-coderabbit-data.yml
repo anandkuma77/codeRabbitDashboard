@@ -1,0 +1,44 @@
+name: Fetch CodeRabbit Data
+
+on:
+  schedule:
+    # Run every 12 hours at 01:00 and 13:00 UTC on weekdays (Mon-Fri)
+    # Staggered from osde2e workflow (which runs at */6 hours) to avoid push conflicts
+    - cron: '0 1,13 * * 1-5'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch CodeRabbit adoption data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/fetch_coderabbit_data.py
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code data/coderabbit-status.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changed
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/coderabbit-status.json
+          git commit -m "Update CodeRabbit adoption data [skip ci]"
+          git pull --rebase origin main
+          git push
