@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CodeRabbit Adoption Dashboard - OSD/ROSA Repos</title>
+<title>CodeRabbit Adoption Dashboard - EEE Repos</title>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <style>
   :root {
@@ -192,9 +192,8 @@
 
 <div class="header">
   <h1>CodeRabbit Adoption Dashboard</h1>
-  <div class="subtitle">OSD/ROSA GitHub Repos: Config Files, Active PR Reviews, and Coverage Gaps</div>
-  <div class="date" id="headerDate">April 2026 | Source: OSD/ROSA Functional Team Repo Assignments (2025) &bull; GitLab repos excluded</div>
-  <div style="margin-top: 12px;"><a class="back-link" href="index.html">&larr; Back to ROSA Insights</a></div>
+  <div class="subtitle">EEE GitHub Repos: Config Files, Active PR Reviews, and Coverage Gaps</div>
+  <div class="date" id="headerDate">April 2026 | Source: EEE Team Repo Assignments </div>
 </div>
 
 <!-- KPI Strip - populated by JS -->
@@ -274,10 +273,6 @@ flowchart LR
     <h3>CodeRabbit Coverage by Repo Status</h3>
     <div id="statusBreakdown"></div>
   </div>
-
-  <div class="card">
-    <div id="statusPie" style="display:flex;justify-content:center;"></div>
-  </div>
 </div>
 
 <!-- SECTION 4: Full Repo Table -->
@@ -323,7 +318,7 @@ flowchart LR
 </div>
 
 <div class="footer" id="footerText">
-  CodeRabbit Adoption Dashboard | <span id="footerDate">April 2026</span> | Data source: OSD/ROSA Functional Team Repo Assignments (2025), GitHub API
+  CodeRabbit Adoption Dashboard | <span id="footerDate">April 2026</span> | Data source: EEE Team Repos, GitHub API
 </div>
 
 <script>
@@ -342,7 +337,6 @@ flowchart LR
       renderCallout(data);
       renderBreakdowns();
       renderStatusBreakdown();
-      await renderStatusPie();
       buildFilters();
       renderTable();
       renderBottomLine(data);
@@ -493,17 +487,7 @@ flowchart LR
         </div>
         ${makeBarRows(teamData, maxTeam, 'var(--teal)', '#ddd')}
       </div>
-      <div class="card">
-        <h3>CodeRabbit Adoption by Domain</h3>
-        <div style="margin-bottom:12px;">
-          <div class="legend">
-            <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div> Reviewing PRs</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#ddd"></div> Total repos</div>
-          </div>
-        </div>
-        ${makeBarRows(domainData, maxDomain, 'var(--purple)', '#ddd')}
-        <div style="font-size:0.8em;color:var(--gray);margin-top:12px;">* Some teams are missing domain names</div>
-      </div>
+     
     `;
   }
 
@@ -540,26 +524,6 @@ flowchart LR
     });
 
     document.getElementById('statusBreakdown').innerHTML = html;
-  }
-
-  async function renderStatusPie() {
-    const statusCounts = {};
-    allRepos.forEach(r => {
-      const s = r.status || 'Unknown';
-      statusCounts[s] = (statusCounts[s] || 0) + 1;
-    });
-    const entries = Object.entries(statusCounts).sort((a,b) => b[1]-a[1]);
-    const pieData = entries.map(([k,v]) => `    "${k}" : ${v}`).join('\n');
-    const def = `%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '13px'}}}%%
-pie showData
-    title Repos by Status
-${pieData}`;
-    try {
-      const { svg } = await mermaid.render('statusPieSvg', def);
-      document.getElementById('statusPie').innerHTML = svg;
-    } catch (e) {
-      document.getElementById('statusPie').textContent = 'Pie chart failed to render';
-    }
   }
 
   // Filters
@@ -711,3 +675,4 @@ ${pieData}`;
 </script>
 </body>
 </html>
+
