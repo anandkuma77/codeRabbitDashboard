@@ -300,7 +300,6 @@ flowchart LR
           <th data-sort="has_config">Config File</th>
           <th data-sort="category">Category</th>
           <th data-sort="status">Status</th>
-          <th data-sort="domain">Domain</th>
           <th data-sort="team">Team</th>
         </tr>
       </thead>
@@ -348,7 +347,7 @@ flowchart LR
       }
     } catch (err) {
       document.getElementById('repoTableBody').innerHTML =
-        `<tr><td colspan="7" style="text-align:center;padding:2rem;color:#e74c3c;">Failed to load data: ${err.message}</td></tr>`;
+        `<tr><td colspan="8" style="text-align:center;padding:2rem;color:#e74c3c;">Failed to load data: ${err.message}</td></tr>`;
     }
   }
 
@@ -597,7 +596,7 @@ flowchart LR
     const repos = sortRepos(getFilteredRepos());
     const tbody = document.getElementById('repoTableBody');
     if (repos.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:1.5rem;color:#999;">No repos match the current filters.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:1.5rem;color:#999;">No repos match the current filters.</td></tr>';
       return;
     }
     tbody.innerHTML = repos.map(r => {
@@ -614,7 +613,6 @@ flowchart LR
         <td>${r.has_config ? `<span class="badge green">${r.config_file}</span>` : '<span class="badge red">No</span>'}</td>
         <td>${getCategoryBadge(r)}</td>
         <td>${getStatusBadge(r.status)}</td>
-        <td>${r.domain && r.domain !== 'None' ? `<span class="badge purple">${r.domain}</span>` : '-'}</td>
         <td>${r.team ? `<span class="badge blue">${r.team}</span>` : '-'}</td>
       </tr>
       `;
