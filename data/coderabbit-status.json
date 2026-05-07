@@ -1,5 +1,5 @@
 {
-  "total": 47,
+  "total": 45,
   "fully_active": 4,
   "reviewing_no_config": 26,
   "config_no_reviews": 0,
@@ -228,24 +228,6 @@
       "last_updated": "2026-05-07T04:47:44.655387Z"
     },
     {
-      "name": "installer",
-      "url": "https://github.com/openshift/installer",
-      "owner": "openshift",
-      "repo": "installer",
-      "team": "Metal Platform",
-      "status": "Active",
-      "domain": "None",
-      "product": "None",
-      "has_config": false,
-      "config_file": null,
-      "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 50,
-      "coderabbit_first_review_count": 22,
-      "coderabbit_first_review_pct": 44.0,
-      "category": "reviewing_no_config",
-      "last_updated": "2026-05-07T04:49:43.249865Z"
-    },
-    {
       "name": "ironic-agent-image",
       "url": "https://github.com/openshift/ironic-agent-image",
       "owner": "openshift",
@@ -370,24 +352,6 @@
       "coderabbit_first_review_pct": 94.1,
       "category": "reviewing_no_config",
       "last_updated": "2026-05-07T04:57:55.700034Z"
-    },
-    {
-      "name": "multiarch-tuning-operator",
-      "url": "https://github.com/openshift/multiarch-tuning-operator",
-      "owner": "openshift",
-      "repo": "multiarch-tuning-operator",
-      "team": "Multi Architecture",
-      "status": "Active",
-      "domain": "None",
-      "product": "None",
-      "has_config": false,
-      "config_file": null,
-      "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 34,
-      "coderabbit_first_review_count": 32,
-      "coderabbit_first_review_pct": 94.1,
-      "category": "reviewing_no_config",
-      "last_updated": "2026-05-07T04:59:12.782884Z"
     },
     {
       "name": "oc-mirror",
