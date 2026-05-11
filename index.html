@@ -316,6 +316,59 @@ flowchart LR
   <div class="grid-3" id="bottomLine"></div>
 </div>
 
+<!-- SECTION 6: Metrics Explanation -->
+<div class="section">
+  <h2>6. Understanding the Metrics</h2>
+  <p class="section-sub">How bot-first and PRs reviewed are calculated</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>What is "Bot-First"?</h3>
+      <p style="margin-bottom: 12px; line-height: 1.6;">
+        A PR is <strong>"bot-first"</strong> when CodeRabbit reviews <strong>before any human</strong>.
+        The script compares timestamps of all CodeRabbit activity vs. human activity.
+      </p>
+      <div class="callout success" style="margin: 0;">
+        <strong>✅ Example</strong>
+        <ul style="margin-top: 8px; margin-left: 20px; line-height: 1.6; font-size: 0.9em;">
+          <li>CodeRabbit reviews: <code>10:05 AM</code> 👈 First</li>
+          <li>Human reviews: <code>2:30 PM</code></li>
+        </ul>
+        <div style="margin-top: 8px; padding: 6px 10px; background: #d5f4e6; border-radius: 6px; font-size: 0.85em;">
+          Result: Bot-first ✓
+        </div>
+      </div>
+      <div class="callout warning" style="margin-top: 12px;">
+        <strong>⚠️ Limitation:</strong> Draft PRs are included but CodeRabbit doesn't review drafts.
+        Human comments on drafts count as "human first," artificially lowering the bot-first percentage.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>How is "PRs Reviewed" Calculated?</h3>
+      <div class="callout warning" style="margin-bottom: 12px;">
+        <strong>⚠️ 50 PR Limit</strong><br>
+        Only the <strong>50 most recently updated PRs</strong> are analyzed per repo.
+        <div style="margin-top: 6px; font-size: 0.9em;">
+          Example: Repo has 100 PRs, all reviewed → metric shows <strong>max 50</strong>
+        </div>
+      </div>
+      <p style="margin-bottom: 12px; line-height: 1.6; font-size: 0.95em;">
+        A PR counts as "reviewed" if CodeRabbit posted ANY activity: reviews, comments, or walkthrough summaries.
+      </p>
+      <div style="background: #f8f9fa; padding: 12px; border-radius: 8px; font-size: 0.9em;">
+        <strong>Analyzed PRs:</strong> Up to 50 most recent (open + closed + draft)
+        <div style="margin-top: 6px; color: #555;">
+          Script fetches 30 closed + 30 open, then takes 50 most recent
+        </div>
+      </div>
+      <div class="callout info" style="margin-top: 12px;">
+        <strong>Why closed PRs?</strong> Shows complete activity history. Fast-merging repos would show artificially low numbers if only open PRs counted.
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="footer" id="footerText">
   CodeRabbit Adoption Dashboard | <span id="footerDate">April 2026</span> | Data source: EEE Team Repos, GitHub API
 </div>
