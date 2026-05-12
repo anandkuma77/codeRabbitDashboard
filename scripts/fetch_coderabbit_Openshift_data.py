@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Fetch CodeRabbit adoption data for OSD/ROSA GitHub repositories.
+Fetch CodeRabbit adoption data for OpenShift GitHub repositories.
 
 This script:
-1. Reads the existing repo list from data/coderabbit-status.json
+1. Reads the existing repo list from data/coderabbit-openshift-status.json
 2. Checks each repo for .coderabbit.yaml config files via GitHub API
 3. Scans recent PRs for coderabbitai[bot] review activity
 4. Tracks if CodeRabbit reviewed PRs BEFORE human reviewers
-5. Updates data/coderabbit-status.json with current status
+5. Updates data/coderabbit-openshift-status.json with current status
 
 Requirements:
 - GITHUB_TOKEN environment variable set
@@ -330,7 +330,7 @@ def main():
             sys.exit(1)
 
     # Load existing data
-    data_file = 'data/coderabbit-status.json'
+    data_file = 'data/coderabbit-openshift-status.json'
     print(f"📂 Loading existing data from {data_file}")
 
     try:
