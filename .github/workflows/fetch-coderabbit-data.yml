@@ -2,9 +2,12 @@ name: Fetch CodeRabbit Data
 
 on:
   schedule:
-    # Run every 12 hours at 01:00 and 13:00 UTC on weekdays (Mon-Fri)
-    # Staggered from osde2e workflow (which runs at */6 hours) to avoid push conflicts
-    - cron: '0 1,13 * * 1-5'
+    # Target IST: 12:15 AM and 12:30 PM on weekdays (GitHub cron is UTC).
+    # 12:15 AM IST = 18:45 UTC prior calendar day → Mon–Fri 18:45 UTC ≈ Tue–Sat 00:15 IST.
+    # 12:30 PM IST = 07:00 UTC → Mon–Fri 07:00 UTC = Mon–Fri 12:30 IST.
+    # Staggered from osde2e workflow (*/6 hours) to reduce push conflicts.
+    - cron: '45 18 * * 1-5'
+    - cron: '0 7 * * 1-5'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
