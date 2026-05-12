@@ -30,7 +30,14 @@
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     color: white;
     padding: 40px 60px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+  .header-content {
+    flex: 1;
+    text-align: left;
   }
   .header h1 { font-size: 2.2em; font-weight: 700; margin-bottom: 8px; }
   .header .subtitle { font-size: 1.1em; opacity: 0.8; }
@@ -186,14 +193,89 @@
   .footer {
     text-align: center; padding: 30px; color: var(--gray); font-size: 0.85em;
   }
+
+  /* Tabs - Segmented Control Style */
+  .tabs-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .tab-segment {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 5px;
+    gap: 5px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+  }
+  .tab {
+    padding: 12px 40px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+    transition: all 0.25s ease;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .tab:hover {
+    color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .tab.active {
+    color: #2c3e50;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .tab.active:hover {
+    color: #1a252f;
+  }
+  @media (max-width: 900px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px 20px;
+    }
+    .header-content {
+      text-align: left;
+    }
+    .tabs-container {
+      width: 100%;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .tab-segment {
+      flex-direction: row;
+      width: auto;
+    }
+    .tab {
+      padding: 10px 24px;
+      font-size: 0.95em;
+    }
+  }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>CodeRabbit Adoption Dashboard</h1>
-  <div class="subtitle"> OpenShift GitHub Repos: Config Files, Active PR Reviews, and Coverage Gaps</div>
-  <div class="date" id="headerDate">April 2026 | Source: OpenShift Team Repos </div>
+  <div class="header-content">
+    <h1>CodeRabbit Adoption Dashboard</h1>
+    <div class="subtitle" id="headerSubtitle"> OpenShift GitHub Repos: Config Files, Active PR Reviews, and Coverage Gaps</div>
+    <div class="date" id="headerDate">April 2026 | Source: OpenShift Team Repos </div>
+  </div>
+
+  <!-- Tabs Navigation - In header on right side -->
+  <div class="tabs-container">
+    <div class="tab-segment">
+      <div class="tab active" data-tab="openshift">Openshift</div>
+      <div class="tab" data-tab="eee">EEE</div>
+    </div>
+  </div>
 </div>
 
 <!-- KPI Strip - populated by JS -->
@@ -377,13 +459,41 @@ flowchart LR
   let allRepos = [];
   let activeFilters = { coderabbit: 'all', status: 'all', team: 'all' };
   let currentSort = { key: 'name', dir: 'asc' };
+  let activeTab = 'openshift';
+
+  const tabConfig = {
+    openshift: {
+      dataFile: 'data/coderabbit-openshift-status.json',
+      title: 'OpenShift GitHub Repos: Config Files, Active PR Reviews, and Coverage Gaps',
+      source: 'OSD/ROSA Functional Team Repo Assignments (2025) \u2022 GitLab repos excluded'
+    },
+    eee: {
+      dataFile: 'data/coderabbit-EEE-status.json',
+      title: 'EEE GitHub Repos: Config Files, Active PR Reviews, and Coverage Gaps',
+      source: 'EEE Team Repos'
+    }
+  };
 
   async function init() {
+    await loadTabData(activeTab);
+    setupTabListeners();
+  }
+
+  async function loadTabData(tab) {
     try {
-      const resp = await fetch('data/coderabbit-status.json');
+      const config = tabConfig[tab];
+      const resp = await fetch(config.dataFile);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       allRepos = data.repos;
+
+      // Update header
+      document.getElementById('headerSubtitle').textContent = config.title;
+
+      // Reset filters when switching tabs
+      activeFilters = { coderabbit: 'all', status: 'all', team: 'all' };
+
+      // Render all sections
       renderKPIs(data);
       renderAdoptionBar(data);
       renderCallout(data);
@@ -392,16 +502,34 @@ flowchart LR
       buildFilters();
       renderTable();
       renderBottomLine(data);
+
       if (data.generated_at) {
         const d = new Date(data.generated_at);
         const dateStr = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-        document.getElementById('headerDate').textContent = dateStr + ' | Source: OSD/ROSA Functional Team Repo Assignments (2025) \u2022 GitLab repos excluded';
+        document.getElementById('headerDate').textContent = dateStr + ' | Source: ' + config.source;
         document.getElementById('footerDate').textContent = dateStr;
       }
     } catch (err) {
       document.getElementById('repoTableBody').innerHTML =
         `<tr><td colspan="8" style="text-align:center;padding:2rem;color:#e74c3c;">Failed to load data: ${err.message}</td></tr>`;
     }
+  }
+
+  function setupTabListeners() {
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', async () => {
+        const tabName = tab.dataset.tab;
+        if (tabName === activeTab) return;
+
+        // Update active tab
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeTab = tabName;
+
+        // Load new data
+        await loadTabData(tabName);
+      });
+    });
   }
 
   function renderKPIs(data) {
