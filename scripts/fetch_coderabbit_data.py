@@ -31,10 +31,12 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 
 # Rate limiting
 REQUEST_DELAY = 0.5  # seconds between API requests
+MAX_RETRIES = 3  # maximum number of retries
+INITIAL_RETRY_DELAY = 1  # initial delay for exponential backoff (in seconds)
 
 
 def github_api_request(endpoint: str) -> Optional[dict]:
-    """Make authenticated GitHub API request."""
+    """Make authenticated GitHub API request with exponential backoff retry."""
     url = f"{GITHUB_API}{endpoint}"
     headers = {
         "Accept": "application/vnd.github+json",
@@ -44,18 +46,52 @@ def github_api_request(endpoint: str) -> Optional[dict]:
     if GITHUB_TOKEN:
         headers["Authorization"] = f"Bearer {GITHUB_TOKEN}"
 
-    try:
-        req = Request(url, headers=headers)
-        with urlopen(req, timeout=30) as response:
-            return json.loads(response.read().decode())
-    except HTTPError as e:
-        if e.code == 404:
-            return None
-        print(f"  ⚠️  HTTP {e.code} for {endpoint}", file=sys.stderr)
-        return None
-    except (URLError, Exception) as e:
-        print(f"  ⚠️  Error fetching {endpoint}: {e}", file=sys.stderr)
-        return None
+    for attempt in range(MAX_RETRIES):
+        try:
+            req = Request(url, headers=headers)
+            with urlopen(req, timeout=30) as response:
+                return json.loads(response.read().decode())
+        except HTTPError as e:
+            if e.code == 404:
+                # 404 means resource doesn't exist, no point retrying
+                return None
+            elif e.code == 403:
+                # Rate limit hit, wait longer
+                retry_delay = INITIAL_RETRY_DELAY * (2 ** attempt)
+                if attempt < MAX_RETRIES - 1:
+                    print(f"  ⚠️  HTTP {e.code} (rate limit) for {endpoint}, retrying in {retry_delay}s... (attempt {attempt + 1}/{MAX_RETRIES})", file=sys.stderr)
+                    time.sleep(retry_delay)
+                    continue
+                else:
+                    print(f"  ❌ HTTP {e.code} for {endpoint} after {MAX_RETRIES} attempts", file=sys.stderr)
+                    return None
+            elif e.code >= 500:
+                # Server error, retry with exponential backoff
+                retry_delay = INITIAL_RETRY_DELAY * (2 ** attempt)
+                if attempt < MAX_RETRIES - 1:
+                    print(f"  ⚠️  HTTP {e.code} (server error) for {endpoint}, retrying in {retry_delay}s... (attempt {attempt + 1}/{MAX_RETRIES})", file=sys.stderr)
+                    time.sleep(retry_delay)
+                    continue
+                else:
+                    print(f"  ❌ HTTP {e.code} for {endpoint} after {MAX_RETRIES} attempts", file=sys.stderr)
+                    return None
+            else:
+                # Other HTTP errors (4xx), no point retrying
+                print(f"  ⚠️  HTTP {e.code} for {endpoint}", file=sys.stderr)
+                return None
+        except (URLError, Exception) as e:
+            # Network errors, timeout, etc. - retry with exponential backoff
+            retry_delay = INITIAL_RETRY_DELAY * (2 ** attempt)
+            if attempt < MAX_RETRIES - 1:
+                print(f"  ⚠️  Error fetching {endpoint}: {e}, retrying in {retry_delay}s... (attempt {attempt + 1}/{MAX_RETRIES})", file=sys.stderr)
+                time.sleep(retry_delay)
+                continue
+            else:
+                print(f"  ❌ Error fetching {endpoint} after {MAX_RETRIES} attempts: {e}", file=sys.stderr)
+                return None
+
+    # Should not reach here, but just in case
+    return None
 
 
 def check_config_file(owner: str, repo: str) -> Tuple[bool, Optional[str]]:
