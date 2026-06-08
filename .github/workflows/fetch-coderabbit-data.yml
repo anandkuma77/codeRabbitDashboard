@@ -37,17 +37,21 @@ jobs:
         run: |
           python3 scripts/fetch_coderabbit_EEE_data.py
 
+      - name: Update historical manifest
+        run: |
+          python3 scripts/update_manifest.py
+
       - name: Check for changes
         id: git-check
         run: |
-          git diff --exit-code data/coderabbit-openshift-status.json data/coderabbit-EEE-status.json || echo "changed=true" >> $GITHUB_OUTPUT
+          git diff --exit-code data/coderabbit-openshift-status.json data/coderabbit-EEE-status.json data/historical-manifest.json || echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Commit and push if changed
         if: steps.git-check.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/coderabbit-openshift-status.json data/coderabbit-EEE-status.json
+          git add data/coderabbit-openshift-status.json data/coderabbit-EEE-status.json data/historical-manifest.json
           git commit -m "Update CodeRabbit adoption data [skip ci]"
           git pull --rebase origin main
           git push

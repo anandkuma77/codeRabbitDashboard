@@ -44,6 +44,7 @@ Each Python script **does not discover new repos by itself**: it loads the exist
 3. For each PR, loads reviews, review comments, and issue comments and detects activity from `coderabbitai[bot]`.
 4. Computes per-repo and summary stats, including how often CodeRabbit commented before any human reviewer.
 5. Writes the file back in place.
+6. **Saves a timestamped historical copy** (e.g., `coderabbit-openshift-status_20260608_143022.json`) for tracking data changes over time.
 
 **Requirements**: Python 3.11+ (stdlib only). Set `GITHUB_TOKEN` for authenticated requests and sensible rate limits. The scripts can fall back to an authenticated `gh` CLI when useful.
 
@@ -79,9 +80,60 @@ Workflow: `.github/workflows/fetch-coderabbit-data.yml`
 
 - Tab switcher for OpenShift vs EEE datasets.
 - KPI strip driven by each JSON summary.
+- **Historical Trends & Insights** section with interactive charts:
+  - Fully Active Repositories trend (last 2 weeks)
+  - Total PRs Reviewed trend (last 2 weeks)
+  - CodeRabbit First Review Rate trend (last 2 weeks)
+  - Weekly summary showing week-over-week changes
+  - **Auto-updates** as new data files are created
 - Adoption overview bar and integration flow (Mermaid).
 - Breakdowns by team, domain, and repo lifecycle **status** (Active / Maintenance / Deprecated from the JSON).
 - Sortable table with filters (CodeRabbit presence, repo status, team) and search.
+
+---
+
+## Historical data
+
+Each script run saves a timestamped copy of the data in the `data/` directory with format:
+- `data/coderabbit-openshift-status_YYYYMMDD_HHMMSS.json`
+- `data/coderabbit-EEE-status_YYYYMMDD_HHMMSS.json`
+
+These historical files are **excluded from git** (via `.gitignore`) to avoid repository bloat. They are kept locally for trend analysis and historical comparison.
+
+### Auto-updating manifest
+
+A manifest file (`data/historical-manifest.json`) tracks all available historical files. The dashboard uses this manifest to automatically load and display trends. The manifest:
+- **IS committed to git** (unlike the historical data files)
+- Updates automatically when scripts run
+- Allows the dashboard graphs to auto-update as new data accumulates
+- Works seamlessly with GitHub Pages deployment
+
+### Extract historical data from git commits
+
+Since the workflow commits data changes to git, you can reconstruct historical files from past commits:
+
+```bash
+# Extract last 7 days of history from git
+python3 scripts/extract_historical_data.py --days 7
+
+# Extract last 30 days
+python3 scripts/extract_historical_data.py --days 30
+
+# Extract all history
+python3 scripts/extract_historical_data.py --days 365
+```
+
+The script reads each commit's data files and saves them with their commit timestamps.
+
+### View historical data
+
+```bash
+# List all historical files by date
+ls -lt data/coderabbit-*-status_*.json
+
+# Count total historical files
+ls -1 data/coderabbit-*-status_*.json | wc -l
+```
 
 ---
 
@@ -89,3 +141,4 @@ Workflow: `.github/workflows/fetch-coderabbit-data.yml`
 
 - To **add or remove** tracked repositories, edit the `repos` entries in the appropriate JSON file, then run the matching fetch script so metrics stay consistent.
 - Prefer updating README narrative here; copy exact counts from the JSON when sharing a formal status report.
+- Historical timestamped files accumulate locally but are not committed to git. Clean up old files manually if needed.
