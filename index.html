@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CodeRabbit Adoption Dashboard - OpenShift Repos</title>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root {
     --red: #e74c3c;
@@ -338,6 +339,34 @@ flowchart LR
   <div id="calloutSection"></div>
 </div>
 
+<!-- SECTION: Historical Trends -->
+<div class="section">
+  <h2>📈 Historical Trends & Insights</h2>
+  <p class="section-sub">Track CodeRabbit adoption progress over the last 1-2 weeks</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Fully Active Repositories (Last 2 Weeks)</h3>
+      <canvas id="fullyActiveChart" style="max-height: 300px;"></canvas>
+    </div>
+    <div class="card">
+      <h3>Total PRs Reviewed (Last 2 Weeks)</h3>
+      <canvas id="totalPRsChart" style="max-height: 300px;"></canvas>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>CodeRabbit First Review Rate (Last 2 Weeks)</h3>
+      <canvas id="firstReviewChart" style="max-height: 300px;"></canvas>
+    </div>
+    <div class="card">
+      <h3>Weekly Summary</h3>
+      <div id="weeklySummary" style="padding: 20px; font-size: 0.95em;"></div>
+    </div>
+  </div>
+</div>
+
 <!-- SECTION 2: By Team & Domain -->
 <div class="section">
   <h2>2. Adoption by Team & Domain</h2>
@@ -497,6 +526,7 @@ flowchart LR
       renderKPIs(data);
       renderAdoptionBar(data);
       renderCallout(data);
+      await renderHistoricalTrends(tab, data);
       renderBreakdowns();
       renderStatusBreakdown();
       buildFilters();
@@ -512,6 +542,212 @@ flowchart LR
     } catch (err) {
       document.getElementById('repoTableBody').innerHTML =
         `<tr><td colspan="8" style="text-align:center;padding:2rem;color:#e74c3c;">Failed to load data: ${err.message}</td></tr>`;
+    }
+  }
+
+  let charts = { fullyActive: null, totalPRs: null, firstReview: null };
+
+  async function renderHistoricalTrends(tab, currentData) {
+    try {
+      // Destroy existing charts
+      Object.values(charts).forEach(chart => chart?.destroy());
+
+      // Load historical data from manifest
+      const historicalData = [];
+
+      try {
+        // Fetch the manifest file
+        const manifestResp = await fetch('data/historical-manifest.json');
+        if (!manifestResp.ok) throw new Error('Manifest not found');
+
+        const manifest = await manifestResp.json();
+        const fileList = tab === 'openshift' ? manifest.openshift : manifest.eee;
+
+        // Load each file from the manifest
+        for (const fileInfo of fileList) {
+          try {
+            const resp = await fetch(fileInfo.path);
+            if (resp.ok) {
+              const data = await resp.json();
+              historicalData.push({
+                timestamp: fileInfo.timestamp,
+                data: data
+              });
+            }
+          } catch (e) {
+            console.warn(`Failed to load ${fileInfo.path}:`, e);
+          }
+        }
+      } catch (manifestError) {
+        console.warn('Manifest not found, using fallback:', manifestError);
+
+        // Fallback: try hardcoded list for backward compatibility
+        const prefix = tab === 'openshift' ? 'coderabbit-openshift-status' : 'coderabbit-EEE-status';
+        const timestamps = [
+          '20260525_155422', '20260526_005847', '20260527_012826', '20260527_163914',
+          '20260528_014438', '20260528_154338', '20260529_014928', '20260529_154137',
+          '20260530_014719', '20260601_175314', '20260602_033127', '20260602_162000',
+          '20260603_022035', '20260603_165826', '20260604_031617', '20260605_024918',
+          '20260605_153335', '20260606_011247'
+        ];
+
+        for (const ts of timestamps) {
+          try {
+            const resp = await fetch(`data/${prefix}_${ts}.json`);
+            if (resp.ok) {
+              const data = await resp.json();
+              historicalData.push({ timestamp: ts, data });
+            }
+          } catch (e) {
+            // Skip
+          }
+        }
+      }
+
+      // Sort by timestamp
+      historicalData.sort((a, b) => a.timestamp.localeCompare(b.timestamp));
+
+      if (historicalData.length === 0) {
+        document.getElementById('weeklySummary').innerHTML = `
+          <div class="callout info">
+            <strong>No historical data available</strong>
+            Historical trend data will appear here once multiple data snapshots are collected.
+          </div>
+        `;
+        return;
+      }
+
+      // Prepare chart data
+      const labels = historicalData.map(h => {
+        const date = h.timestamp.substring(0, 8);
+        const time = h.timestamp.substring(9, 15);
+        return `${date.substring(4, 6)}/${date.substring(6, 8)} ${time.substring(0, 2)}:${time.substring(2, 4)}`;
+      });
+
+      const fullyActiveData = historicalData.map(h => h.data.fully_active || 0);
+      const totalPRsData = historicalData.map(h => h.data.total_prs_reviewed || 0);
+      const firstReviewPctData = historicalData.map(h => h.data.coderabbit_first_review_pct || 0);
+
+      // Create charts
+      const chartConfig = {
+        type: 'line',
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      };
+
+      charts.fullyActive = new Chart(document.getElementById('fullyActiveChart'), {
+        ...chartConfig,
+        data: {
+          labels,
+          datasets: [{
+            label: 'Fully Active Repos',
+            data: fullyActiveData,
+            borderColor: '#27ae60',
+            backgroundColor: 'rgba(39, 174, 96, 0.1)',
+            fill: true,
+            tension: 0.3
+          }]
+        }
+      });
+
+      charts.totalPRs = new Chart(document.getElementById('totalPRsChart'), {
+        ...chartConfig,
+        data: {
+          labels,
+          datasets: [{
+            label: 'Total PRs Reviewed',
+            data: totalPRsData,
+            borderColor: '#2980b9',
+            backgroundColor: 'rgba(41, 128, 185, 0.1)',
+            fill: true,
+            tension: 0.3
+          }]
+        }
+      });
+
+      charts.firstReview = new Chart(document.getElementById('firstReviewChart'), {
+        ...chartConfig,
+        data: {
+          labels,
+          datasets: [{
+            label: 'First Review %',
+            data: firstReviewPctData,
+            borderColor: '#8e44ad',
+            backgroundColor: 'rgba(142, 68, 173, 0.1)',
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: {
+          ...chartConfig.options,
+          scales: {
+            y: { beginAtZero: true, max: 100 }
+          }
+        }
+      });
+
+      // Calculate weekly summary
+      const oneWeekAgo = historicalData.length >= 7 ? historicalData[historicalData.length - 7] : historicalData[0];
+      const latest = historicalData[historicalData.length - 1];
+
+      const fullyActiveDiff = latest.data.fully_active - oneWeekAgo.data.fully_active;
+      const prsDiff = latest.data.total_prs_reviewed - oneWeekAgo.data.total_prs_reviewed;
+      const firstReviewDiff = latest.data.coderabbit_first_review_pct - oneWeekAgo.data.coderabbit_first_review_pct;
+
+      document.getElementById('weeklySummary').innerHTML = `
+        <div style="margin-bottom: 16px;">
+          <strong style="font-size: 1.1em; color: var(--dark);">Last Week's Progress</strong>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee;">
+            <span>Fully Active Repos</span>
+            <span style="font-weight: 600; color: ${fullyActiveDiff >= 0 ? 'var(--green)' : 'var(--red)'}">
+              ${fullyActiveDiff > 0 ? '+' : ''}${fullyActiveDiff}
+              <span style="font-size: 0.85em; color: var(--gray); margin-left: 4px;">
+                (${oneWeekAgo.data.fully_active} → ${latest.data.fully_active})
+              </span>
+            </span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee;">
+            <span>Total PRs Reviewed</span>
+            <span style="font-weight: 600; color: ${prsDiff >= 0 ? 'var(--green)' : 'var(--red)'}">
+              ${prsDiff > 0 ? '+' : ''}${prsDiff}
+              <span style="font-size: 0.85em; color: var(--gray); margin-left: 4px;">
+                (${oneWeekAgo.data.total_prs_reviewed} → ${latest.data.total_prs_reviewed})
+              </span>
+            </span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
+            <span>First Review Rate</span>
+            <span style="font-weight: 600; color: ${firstReviewDiff >= 0 ? 'var(--green)' : 'var(--red)'}">
+              ${firstReviewDiff > 0 ? '+' : ''}${firstReviewDiff.toFixed(1)}%
+              <span style="font-size: 0.85em; color: var(--gray); margin-left: 4px;">
+                (${oneWeekAgo.data.coderabbit_first_review_pct}% → ${latest.data.coderabbit_first_review_pct}%)
+              </span>
+            </span>
+          </div>
+        </div>
+        <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 6px; font-size: 0.9em; color: var(--gray);">
+          <strong>Data points:</strong> ${historicalData.length} snapshots over ${Math.ceil((new Date(latest.timestamp.replace('_', 'T')) - new Date(historicalData[0].timestamp.replace('_', 'T'))) / (1000 * 60 * 60 * 24))} days
+        </div>
+      `;
+
+    } catch (err) {
+      console.error('Error rendering historical trends:', err);
+      document.getElementById('weeklySummary').innerHTML = `
+        <div class="callout warning">
+          <strong>Unable to load historical data</strong>
+          ${err.message}
+        </div>
+      `;
     }
   }
 

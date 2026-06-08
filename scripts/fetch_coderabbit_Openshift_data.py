@@ -373,10 +373,25 @@ def main():
     output_data = summary.copy()
     output_data['repos'] = updated_repos
 
-    # Write updated data
+    # Write updated data to main file
     print(f"💾 Writing updated data to {data_file}")
     with open(data_file, 'w') as f:
         json.dump(output_data, f, indent=2)
+
+    # Write timestamped historical copy
+    timestamp = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
+    historical_file = f'data/coderabbit-openshift-status_{timestamp}.json'
+    print(f"💾 Writing historical copy to {historical_file}")
+    with open(historical_file, 'w') as f:
+        json.dump(output_data, f, indent=2)
+
+    # Update historical manifest
+    print(f"📋 Updating historical manifest...")
+    try:
+        subprocess.run(['python3', 'scripts/update_manifest.py'], check=True, capture_output=True)
+        print(f"✅ Manifest updated")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️  Failed to update manifest: {e}", file=sys.stderr)
 
     # Print summary
     print(f"\n{'='*60}")
@@ -390,7 +405,9 @@ def main():
     print(f"\nCodeRabbit Review Activity:")
     print(f"  Total PRs reviewed: {summary['total_prs_reviewed']}")
     print(f"  CodeRabbit reviewed first: {summary['total_coderabbit_first_reviews']} ({summary['coderabbit_first_review_pct']}%)")
-    print(f"\nData saved to {data_file}")
+    print(f"\nData saved to:")
+    print(f"  Main file: {data_file}")
+    print(f"  Historical copy: {historical_file}")
     print(f"Last updated: {summary['last_updated']}")
 
 
