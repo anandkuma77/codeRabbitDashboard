@@ -1,15 +1,15 @@
 {
   "total": 160,
-  "fully_active": 23,
-  "reviewing_no_config": 124,
+  "fully_active": 24,
+  "reviewing_no_config": 123,
   "config_no_reviews": 1,
   "not_configured": 12,
-  "has_config_total": 24,
+  "has_config_total": 25,
   "has_reviews_total": 147,
-  "total_prs_reviewed": 3670,
-  "total_coderabbit_first_reviews": 1049,
-  "coderabbit_first_review_pct": 28.6,
-  "last_updated": "2026-07-22T13:38:59.102098Z",
+  "total_prs_reviewed": 3680,
+  "total_coderabbit_first_reviews": 1050,
+  "coderabbit_first_review_pct": 28.5,
+  "last_updated": "2026-07-23T00:25:18.949530Z",
   "repos": [
     {
       "name": "alibaba-cloud-csi-driver",
@@ -27,7 +27,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T09:23:38.313981Z"
+      "last_updated": "2026-07-22T19:58:40.832103Z"
     },
     {
       "name": "alibaba-disk-csi-driver-operator",
@@ -45,7 +45,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T09:24:53.911846Z"
+      "last_updated": "2026-07-22T20:00:02.181466Z"
     },
     {
       "name": "apiserver-network-proxy",
@@ -63,7 +63,7 @@
       "coderabbit_first_review_count": 5,
       "coderabbit_first_review_pct": 27.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:26:12.709149Z"
+      "last_updated": "2026-07-22T20:01:28.426256Z"
     },
     {
       "name": "assisted-installer",
@@ -81,7 +81,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:28:18.359048Z"
+      "last_updated": "2026-07-22T20:03:42.080233Z"
     },
     {
       "name": "assisted-installer-agent",
@@ -96,10 +96,10 @@
       "config_file": null,
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 50,
-      "coderabbit_first_review_count": 1,
-      "coderabbit_first_review_pct": 2.0,
+      "coderabbit_first_review_count": 0,
+      "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:30:22.893837Z"
+      "last_updated": "2026-07-22T20:05:54.630662Z"
     },
     {
       "name": "assisted-service",
@@ -117,7 +117,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 2.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:32:30.571564Z"
+      "last_updated": "2026-07-22T20:08:10.343318Z"
     },
     {
       "name": "aws-ebs-csi-driver",
@@ -135,7 +135,7 @@
       "coderabbit_first_review_count": 8,
       "coderabbit_first_review_pct": 32.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:33:51.620705Z"
+      "last_updated": "2026-07-22T20:09:35.838292Z"
     },
     {
       "name": "aws-ebs-csi-driver-operator",
@@ -153,7 +153,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T09:35:06.796285Z"
+      "last_updated": "2026-07-22T20:10:55.673084Z"
     },
     {
       "name": "aws-pod-identity-webhook",
@@ -171,7 +171,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 33.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:36:25.095009Z"
+      "last_updated": "2026-07-22T20:12:17.042535Z"
     },
     {
       "name": "azure-disk-csi-driver",
@@ -189,7 +189,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 12.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:37:41.822310Z"
+      "last_updated": "2026-07-22T20:13:39.426785Z"
     },
     {
       "name": "azure-disk-csi-driver-operator",
@@ -207,7 +207,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T09:38:56.168308Z"
+      "last_updated": "2026-07-22T20:14:59.291867Z"
     },
     {
       "name": "azure-file-csi-driver",
@@ -225,7 +225,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 8.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:40:27.638767Z"
+      "last_updated": "2026-07-22T20:16:35.598454Z"
     },
     {
       "name": "azure-file-csi-driver-operator",
@@ -243,7 +243,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T09:41:42.360513Z"
+      "last_updated": "2026-07-22T20:17:54.683944Z"
     },
     {
       "name": "baremetal-runtimecfg",
@@ -261,7 +261,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 14.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:43:06.343692Z"
+      "last_updated": "2026-07-22T20:19:24.918887Z"
     },
     {
       "name": "bond-cni",
@@ -279,7 +279,7 @@
       "coderabbit_first_review_count": 7,
       "coderabbit_first_review_pct": 63.6,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:44:34.421889Z"
+      "last_updated": "2026-07-22T20:20:57.745736Z"
     },
     {
       "name": "builder",
@@ -297,7 +297,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 7.9,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:46:30.788514Z"
+      "last_updated": "2026-07-22T20:23:00.272144Z"
     },
     {
       "name": "cloud-credential-operator",
@@ -315,7 +315,7 @@
       "coderabbit_first_review_count": 8,
       "coderabbit_first_review_pct": 17.4,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:48:37.313903Z"
+      "last_updated": "2026-07-22T20:25:13.727816Z"
     },
     {
       "name": "cloud-network-config-controller",
@@ -333,7 +333,7 @@
       "coderabbit_first_review_count": 27,
       "coderabbit_first_review_pct": 55.1,
       "category": "fully_active",
-      "last_updated": "2026-07-22T09:50:46.473243Z"
+      "last_updated": "2026-07-22T20:27:28.168277Z"
     },
     {
       "name": "cloud-provider-alibaba-cloud",
@@ -351,7 +351,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T09:52:02.550194Z"
+      "last_updated": "2026-07-22T20:28:47.334034Z"
     },
     {
       "name": "cloud-provider-aws",
@@ -369,7 +369,7 @@
       "coderabbit_first_review_count": 13,
       "coderabbit_first_review_pct": 43.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:53:30.171972Z"
+      "last_updated": "2026-07-22T20:30:19.699028Z"
     },
     {
       "name": "cloud-provider-azure",
@@ -387,7 +387,7 @@
       "coderabbit_first_review_count": 12,
       "coderabbit_first_review_pct": 36.4,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:54:59.948560Z"
+      "last_updated": "2026-07-22T20:31:54.350138Z"
     },
     {
       "name": "cloud-provider-gcp",
@@ -405,7 +405,7 @@
       "coderabbit_first_review_count": 14,
       "coderabbit_first_review_pct": 43.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:56:46.738815Z"
+      "last_updated": "2026-07-22T20:33:47.056443Z"
     },
     {
       "name": "cloud-provider-ibm",
@@ -423,7 +423,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 9.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:58:08.839509Z"
+      "last_updated": "2026-07-22T20:35:13.565165Z"
     },
     {
       "name": "cloud-provider-kubevirt",
@@ -441,7 +441,7 @@
       "coderabbit_first_review_count": 10,
       "coderabbit_first_review_pct": 52.6,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T09:59:32.019040Z"
+      "last_updated": "2026-07-22T20:36:41.763856Z"
     },
     {
       "name": "cloud-provider-openstack",
@@ -459,7 +459,7 @@
       "coderabbit_first_review_count": 11,
       "coderabbit_first_review_pct": 36.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:00:56.071103Z"
+      "last_updated": "2026-07-22T20:38:10.113839Z"
     },
     {
       "name": "cloud-provider-vsphere",
@@ -477,7 +477,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 12.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:02:17.740364Z"
+      "last_updated": "2026-07-22T20:39:35.268905Z"
     },
     {
       "name": "cluster-api",
@@ -495,7 +495,7 @@
       "coderabbit_first_review_count": 10,
       "coderabbit_first_review_pct": 31.2,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:03:46.566251Z"
+      "last_updated": "2026-07-22T20:41:07.891375Z"
     },
     {
       "name": "cluster-api-operator",
@@ -513,7 +513,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 7.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:05:08.432603Z"
+      "last_updated": "2026-07-22T20:42:32.987767Z"
     },
     {
       "name": "cluster-api-provider-alibaba",
@@ -531,7 +531,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:06:34.944655Z"
+      "last_updated": "2026-07-22T20:44:01.125603Z"
     },
     {
       "name": "cluster-api-provider-aws",
@@ -549,7 +549,7 @@
       "coderabbit_first_review_count": 18,
       "coderabbit_first_review_pct": 48.6,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:08:20.713872Z"
+      "last_updated": "2026-07-22T20:45:45.300515Z"
     },
     {
       "name": "cluster-api-provider-azure",
@@ -567,7 +567,7 @@
       "coderabbit_first_review_count": 8,
       "coderabbit_first_review_pct": 26.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:09:50.787893Z"
+      "last_updated": "2026-07-22T20:47:16.554648Z"
     },
     {
       "name": "cluster-api-provider-gcp",
@@ -585,7 +585,7 @@
       "coderabbit_first_review_count": 7,
       "coderabbit_first_review_pct": 23.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:11:11.250828Z"
+      "last_updated": "2026-07-22T20:48:40.333446Z"
     },
     {
       "name": "cluster-api-provider-ibmcloud",
@@ -603,7 +603,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 23.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:12:41.949243Z"
+      "last_updated": "2026-07-22T20:50:13.059262Z"
     },
     {
       "name": "cluster-api-provider-libvirt",
@@ -621,7 +621,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 16.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:14:18.965109Z"
+      "last_updated": "2026-07-22T20:51:54.994325Z"
     },
     {
       "name": "cluster-api-provider-openstack",
@@ -639,7 +639,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 11.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:15:58.388079Z"
+      "last_updated": "2026-07-22T20:53:39.570940Z"
     },
     {
       "name": "cluster-api-provider-ovirt",
@@ -675,7 +675,7 @@
       "coderabbit_first_review_count": 7,
       "coderabbit_first_review_pct": 23.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:17:41.468504Z"
+      "last_updated": "2026-07-22T20:55:29.316192Z"
     },
     {
       "name": "cluster-authentication-operator",
@@ -693,7 +693,7 @@
       "coderabbit_first_review_count": 13,
       "coderabbit_first_review_pct": 26.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:19:56.210034Z"
+      "last_updated": "2026-07-22T20:57:53.684157Z"
     },
     {
       "name": "cluster-autoscaler-operator",
@@ -704,14 +704,14 @@
       "status": "Active",
       "domain": "None",
       "product": "None",
-      "has_config": false,
-      "config_file": null,
+      "has_config": true,
+      "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 10,
-      "coderabbit_first_review_count": 2,
-      "coderabbit_first_review_pct": 20.0,
-      "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:21:16.256818Z"
+      "coderabbit_pr_count": 12,
+      "coderabbit_first_review_count": 3,
+      "coderabbit_first_review_pct": 25.0,
+      "category": "fully_active",
+      "last_updated": "2026-07-22T20:59:20.116038Z"
     },
     {
       "name": "cluster-bootstrap",
@@ -729,7 +729,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 40.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:22:42.850990Z"
+      "last_updated": "2026-07-22T21:00:52.741876Z"
     },
     {
       "name": "cluster-capi-operator",
@@ -747,7 +747,7 @@
       "coderabbit_first_review_count": 8,
       "coderabbit_first_review_pct": 16.0,
       "category": "fully_active",
-      "last_updated": "2026-07-22T10:25:03.099651Z"
+      "last_updated": "2026-07-22T21:03:24.286808Z"
     },
     {
       "name": "cluster-cloud-controller-manager-operator",
@@ -765,7 +765,7 @@
       "coderabbit_first_review_count": 12,
       "coderabbit_first_review_pct": 33.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:26:42.189027Z"
+      "last_updated": "2026-07-22T21:05:13.437609Z"
     },
     {
       "name": "cluster-config-operator",
@@ -783,7 +783,7 @@
       "coderabbit_first_review_count": 15,
       "coderabbit_first_review_pct": 35.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:28:39.489893Z"
+      "last_updated": "2026-07-22T21:07:19.804939Z"
     },
     {
       "name": "cluster-control-plane-machine-set-operator",
@@ -801,7 +801,7 @@
       "coderabbit_first_review_count": 5,
       "coderabbit_first_review_pct": 33.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:30:20.475174Z"
+      "last_updated": "2026-07-22T21:09:07.374364Z"
     },
     {
       "name": "cluster-csi-snapshot-controller-operator",
@@ -819,7 +819,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 20.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:31:47.034483Z"
+      "last_updated": "2026-07-22T21:10:39.052145Z"
     },
     {
       "name": "cluster-dns-operator",
@@ -837,7 +837,7 @@
       "coderabbit_first_review_count": 5,
       "coderabbit_first_review_pct": 23.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:33:27.302251Z"
+      "last_updated": "2026-07-22T21:12:25.254886Z"
     },
     {
       "name": "cluster-etcd-operator",
@@ -855,7 +855,7 @@
       "coderabbit_first_review_count": 19,
       "coderabbit_first_review_pct": 38.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:35:44.279672Z"
+      "last_updated": "2026-07-22T21:14:47.170316Z"
     },
     {
       "name": "cluster-image-registry-operator",
@@ -870,10 +870,10 @@
       "config_file": null,
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 44,
-      "coderabbit_first_review_count": 7,
-      "coderabbit_first_review_pct": 15.9,
+      "coderabbit_first_review_count": 8,
+      "coderabbit_first_review_pct": 18.2,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:37:50.470840Z"
+      "last_updated": "2026-07-22T21:17:00.632337Z"
     },
     {
       "name": "cluster-ingress-operator",
@@ -888,10 +888,10 @@
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 48,
-      "coderabbit_first_review_count": 14,
-      "coderabbit_first_review_pct": 29.2,
+      "coderabbit_first_review_count": 15,
+      "coderabbit_first_review_pct": 31.2,
       "category": "fully_active",
-      "last_updated": "2026-07-22T10:40:04.857699Z"
+      "last_updated": "2026-07-22T21:19:23.068337Z"
     },
     {
       "name": "cluster-kube-apiserver-operator",
@@ -909,7 +909,7 @@
       "coderabbit_first_review_count": 21,
       "coderabbit_first_review_pct": 42.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:42:20.127535Z"
+      "last_updated": "2026-07-22T21:21:43.513629Z"
     },
     {
       "name": "cluster-kube-controller-manager-operator",
@@ -927,7 +927,7 @@
       "coderabbit_first_review_count": 9,
       "coderabbit_first_review_pct": 25.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:44:20.962147Z"
+      "last_updated": "2026-07-22T21:23:48.580982Z"
     },
     {
       "name": "cluster-kube-scheduler-operator",
@@ -945,7 +945,7 @@
       "coderabbit_first_review_count": 8,
       "coderabbit_first_review_pct": 25.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:46:04.407873Z"
+      "last_updated": "2026-07-22T21:25:39.625212Z"
     },
     {
       "name": "cluster-kube-storage-version-migrator-operator",
@@ -963,7 +963,7 @@
       "coderabbit_first_review_count": 14,
       "coderabbit_first_review_pct": 35.9,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:47:47.443906Z"
+      "last_updated": "2026-07-22T21:27:26.300390Z"
     },
     {
       "name": "cluster-machine-approver",
@@ -981,7 +981,7 @@
       "coderabbit_first_review_count": 4,
       "coderabbit_first_review_pct": 25.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:49:23.191495Z"
+      "last_updated": "2026-07-22T21:29:05.876901Z"
     },
     {
       "name": "cluster-monitoring-operator",
@@ -996,10 +996,10 @@
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 39,
-      "coderabbit_first_review_count": 12,
-      "coderabbit_first_review_pct": 30.8,
+      "coderabbit_first_review_count": 13,
+      "coderabbit_first_review_pct": 33.3,
       "category": "fully_active",
-      "last_updated": "2026-07-22T10:51:35.712920Z"
+      "last_updated": "2026-07-22T21:31:26.128026Z"
     },
     {
       "name": "cluster-network-operator",
@@ -1017,7 +1017,7 @@
       "coderabbit_first_review_count": 26,
       "coderabbit_first_review_pct": 53.1,
       "category": "fully_active",
-      "last_updated": "2026-07-22T10:53:49.390864Z"
+      "last_updated": "2026-07-22T21:33:49.580548Z"
     },
     {
       "name": "cluster-node-tuning-operator",
@@ -1035,7 +1035,7 @@
       "coderabbit_first_review_count": 28,
       "coderabbit_first_review_pct": 57.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:55:59.288760Z"
+      "last_updated": "2026-07-22T21:36:09.022926Z"
     },
     {
       "name": "cluster-openshift-apiserver-operator",
@@ -1050,10 +1050,10 @@
       "config_file": null,
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 43,
-      "coderabbit_first_review_count": 15,
-      "coderabbit_first_review_pct": 34.9,
+      "coderabbit_first_review_count": 14,
+      "coderabbit_first_review_pct": 32.6,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:58:09.749393Z"
+      "last_updated": "2026-07-22T21:38:26.189306Z"
     },
     {
       "name": "cluster-openshift-controller-manager-operator",
@@ -1071,7 +1071,7 @@
       "coderabbit_first_review_count": 6,
       "coderabbit_first_review_pct": 23.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T10:59:59.784546Z"
+      "last_updated": "2026-07-22T21:40:19.194342Z"
     },
     {
       "name": "cluster-policy-controller",
@@ -1089,7 +1089,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 9.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:01:40.147655Z"
+      "last_updated": "2026-07-22T21:42:00.148963Z"
     },
     {
       "name": "cluster-samples-operator",
@@ -1107,7 +1107,7 @@
       "coderabbit_first_review_count": 10,
       "coderabbit_first_review_pct": 41.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:03:02.966353Z"
+      "last_updated": "2026-07-22T21:43:25.589336Z"
     },
     {
       "name": "cluster-storage-operator",
@@ -1125,7 +1125,7 @@
       "coderabbit_first_review_count": 5,
       "coderabbit_first_review_pct": 12.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:04:55.701284Z"
+      "last_updated": "2026-07-22T21:45:22.403376Z"
     },
     {
       "name": "cluster-update-keys",
@@ -1143,7 +1143,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 25.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:06:16.974841Z"
+      "last_updated": "2026-07-22T21:46:47.885987Z"
     },
     {
       "name": "cluster-version-operator",
@@ -1161,7 +1161,7 @@
       "coderabbit_first_review_count": 19,
       "coderabbit_first_review_pct": 41.3,
       "category": "fully_active",
-      "last_updated": "2026-07-22T11:08:24.747820Z"
+      "last_updated": "2026-07-22T21:49:02.680624Z"
     },
     {
       "name": "configmap-reload",
@@ -1179,7 +1179,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "fully_active",
-      "last_updated": "2026-07-22T11:09:38.719004Z"
+      "last_updated": "2026-07-22T21:50:21.796792Z"
     },
     {
       "name": "console",
@@ -1193,11 +1193,11 @@
       "has_config": true,
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 46,
-      "coderabbit_first_review_count": 9,
-      "coderabbit_first_review_pct": 19.6,
+      "coderabbit_pr_count": 47,
+      "coderabbit_first_review_count": 12,
+      "coderabbit_first_review_pct": 25.5,
       "category": "fully_active",
-      "last_updated": "2026-07-22T11:11:52.611221Z"
+      "last_updated": "2026-07-22T21:52:42.542241Z"
     },
     {
       "name": "console-operator",
@@ -1212,10 +1212,10 @@
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 45,
-      "coderabbit_first_review_count": 12,
-      "coderabbit_first_review_pct": 26.7,
+      "coderabbit_first_review_count": 11,
+      "coderabbit_first_review_pct": 24.4,
       "category": "fully_active",
-      "last_updated": "2026-07-22T11:14:04.085917Z"
+      "last_updated": "2026-07-22T21:55:03.957622Z"
     },
     {
       "name": "containernetworking-plugins",
@@ -1233,7 +1233,7 @@
       "coderabbit_first_review_count": 4,
       "coderabbit_first_review_pct": 17.4,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:15:45.677882Z"
+      "last_updated": "2026-07-22T21:56:51.479650Z"
     },
     {
       "name": "coredns",
@@ -1251,7 +1251,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 8.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:17:27.645892Z"
+      "last_updated": "2026-07-22T21:58:38.674312Z"
     },
     {
       "name": "csi-driver-manila-operator",
@@ -1269,7 +1269,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:18:46.935889Z"
+      "last_updated": "2026-07-22T22:00:01.937206Z"
     },
     {
       "name": "csi-driver-nfs",
@@ -1287,7 +1287,7 @@
       "coderabbit_first_review_count": 7,
       "coderabbit_first_review_pct": 33.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:20:21.648870Z"
+      "last_updated": "2026-07-22T22:01:42.259124Z"
     },
     {
       "name": "csi-driver-shared-resource",
@@ -1305,7 +1305,7 @@
       "coderabbit_first_review_count": 21,
       "coderabbit_first_review_pct": 84.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:21:41.558553Z"
+      "last_updated": "2026-07-22T22:03:06.795452Z"
     },
     {
       "name": "csi-driver-shared-resource-operator",
@@ -1323,7 +1323,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:22:57.317606Z"
+      "last_updated": "2026-07-22T22:04:26.268335Z"
     },
     {
       "name": "csi-external-attacher",
@@ -1337,11 +1337,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 12,
+      "coderabbit_pr_count": 13,
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:24:12.162821Z"
+      "last_updated": "2026-07-22T22:05:48.494786Z"
     },
     {
       "name": "csi-external-provisioner",
@@ -1355,11 +1355,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 21,
+      "coderabbit_pr_count": 22,
       "coderabbit_first_review_count": 2,
-      "coderabbit_first_review_pct": 9.5,
+      "coderabbit_first_review_pct": 9.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:25:33.427493Z"
+      "last_updated": "2026-07-22T22:07:16.707767Z"
     },
     {
       "name": "csi-external-resizer",
@@ -1373,11 +1373,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 10,
+      "coderabbit_pr_count": 11,
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:27:00.899438Z"
+      "last_updated": "2026-07-22T22:08:51.138254Z"
     },
     {
       "name": "csi-external-snapshotter",
@@ -1395,7 +1395,7 @@
       "coderabbit_first_review_count": 8,
       "coderabbit_first_review_pct": 34.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:28:22.933292Z"
+      "last_updated": "2026-07-22T22:10:18.397717Z"
     },
     {
       "name": "csi-livenessprobe",
@@ -1413,7 +1413,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:29:47.691345Z"
+      "last_updated": "2026-07-22T22:11:48.221102Z"
     },
     {
       "name": "csi-node-driver-registrar",
@@ -1431,7 +1431,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 10.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:31:12.423973Z"
+      "last_updated": "2026-07-22T22:13:19.141323Z"
     },
     {
       "name": "driver-toolkit",
@@ -1449,7 +1449,7 @@
       "coderabbit_first_review_count": 7,
       "coderabbit_first_review_pct": 53.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:32:34.893407Z"
+      "last_updated": "2026-07-22T22:14:45.300535Z"
     },
     {
       "name": "egress-router-cni",
@@ -1467,7 +1467,7 @@
       "coderabbit_first_review_count": 5,
       "coderabbit_first_review_pct": 50.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:34:01.150317Z"
+      "last_updated": "2026-07-22T22:16:16.389544Z"
     },
     {
       "name": "etcd",
@@ -1485,7 +1485,7 @@
       "coderabbit_first_review_count": 12,
       "coderabbit_first_review_pct": 42.9,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:36:01.390935Z"
+      "last_updated": "2026-07-22T22:18:19.995877Z"
     },
     {
       "name": "gcp-pd-csi-driver",
@@ -1503,7 +1503,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 11.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:37:22.426279Z"
+      "last_updated": "2026-07-22T22:19:45.964292Z"
     },
     {
       "name": "gcp-pd-csi-driver-operator",
@@ -1521,7 +1521,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 9.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:38:43.099320Z"
+      "last_updated": "2026-07-22T22:21:10.893965Z"
     },
     {
       "name": "ibm-powervs-block-csi-driver",
@@ -1539,7 +1539,7 @@
       "coderabbit_first_review_count": 7,
       "coderabbit_first_review_pct": 33.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:40:01.191459Z"
+      "last_updated": "2026-07-22T22:22:33.010014Z"
     },
     {
       "name": "ibm-powervs-block-csi-driver-operator",
@@ -1557,7 +1557,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 21.4,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:41:20.464903Z"
+      "last_updated": "2026-07-22T22:23:57.098590Z"
     },
     {
       "name": "ibm-vpc-block-csi-driver",
@@ -1575,7 +1575,7 @@
       "coderabbit_first_review_count": 5,
       "coderabbit_first_review_pct": 22.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:42:44.904205Z"
+      "last_updated": "2026-07-22T22:25:24.781781Z"
     },
     {
       "name": "ibm-vpc-block-csi-driver-operator",
@@ -1593,7 +1593,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 14.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:44:08.239330Z"
+      "last_updated": "2026-07-22T22:26:48.240027Z"
     },
     {
       "name": "ibm-vpc-node-label-updater",
@@ -1611,7 +1611,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 12.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:45:31.963667Z"
+      "last_updated": "2026-07-22T22:28:15.814058Z"
     },
     {
       "name": "image-registry",
@@ -1629,7 +1629,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 11.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:46:58.992506Z"
+      "last_updated": "2026-07-22T22:29:46.858718Z"
     },
     {
       "name": "images",
@@ -1643,11 +1643,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 17,
+      "coderabbit_pr_count": 18,
       "coderabbit_first_review_count": 6,
-      "coderabbit_first_review_pct": 35.3,
+      "coderabbit_first_review_pct": 33.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:48:32.964163Z"
+      "last_updated": "2026-07-22T22:31:27.887445Z"
     },
     {
       "name": "insights-operator",
@@ -1665,7 +1665,7 @@
       "coderabbit_first_review_count": 18,
       "coderabbit_first_review_pct": 45.0,
       "category": "fully_active",
-      "last_updated": "2026-07-22T11:50:22.581294Z"
+      "last_updated": "2026-07-22T22:33:24.146620Z"
     },
     {
       "name": "k8s-prometheus-adapter",
@@ -1683,7 +1683,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T11:51:38.743870Z"
+      "last_updated": "2026-07-22T22:34:43.032519Z"
     },
     {
       "name": "kube-rbac-proxy",
@@ -1701,7 +1701,7 @@
       "coderabbit_first_review_count": 9,
       "coderabbit_first_review_pct": 42.9,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:53:10.818131Z"
+      "last_updated": "2026-07-22T22:36:19.391447Z"
     },
     {
       "name": "kube-state-metrics",
@@ -1719,7 +1719,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 13.3,
       "category": "fully_active",
-      "last_updated": "2026-07-22T11:54:36.505355Z"
+      "last_updated": "2026-07-22T22:37:45.738062Z"
     },
     {
       "name": "kubernetes",
@@ -1737,7 +1737,7 @@
       "coderabbit_first_review_count": 10,
       "coderabbit_first_review_pct": 20.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:56:49.493236Z"
+      "last_updated": "2026-07-22T22:40:03.481382Z"
     },
     {
       "name": "kubernetes-autoscaler",
@@ -1755,7 +1755,7 @@
       "coderabbit_first_review_count": 4,
       "coderabbit_first_review_pct": 22.2,
       "category": "fully_active",
-      "last_updated": "2026-07-22T11:58:15.550849Z"
+      "last_updated": "2026-07-22T22:41:32.162303Z"
     },
     {
       "name": "kubernetes-kube-storage-version-migrator",
@@ -1773,7 +1773,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 20.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T11:59:53.533637Z"
+      "last_updated": "2026-07-22T22:43:09.735355Z"
     },
     {
       "name": "kubevirt-csi-driver",
@@ -1791,7 +1791,7 @@
       "coderabbit_first_review_count": 7,
       "coderabbit_first_review_pct": 25.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:01:27.201800Z"
+      "last_updated": "2026-07-22T22:44:44.695608Z"
     },
     {
       "name": "kuryr-kubernetes",
@@ -1809,7 +1809,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:02:55.825192Z"
+      "last_updated": "2026-07-22T22:46:03.430854Z"
     },
     {
       "name": "machine-api-provider-aws",
@@ -1827,7 +1827,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 14.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:04:31.143699Z"
+      "last_updated": "2026-07-22T22:47:43.138795Z"
     },
     {
       "name": "machine-api-provider-azure",
@@ -1845,7 +1845,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 11.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:06:01.707463Z"
+      "last_updated": "2026-07-22T22:49:16.897418Z"
     },
     {
       "name": "machine-api-provider-gcp",
@@ -1863,7 +1863,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:07:33.220015Z"
+      "last_updated": "2026-07-22T22:50:50.926514Z"
     },
     {
       "name": "machine-api-provider-ibmcloud",
@@ -1881,7 +1881,7 @@
       "coderabbit_first_review_count": 4,
       "coderabbit_first_review_pct": 21.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:08:55.239187Z"
+      "last_updated": "2026-07-22T22:52:16.791129Z"
     },
     {
       "name": "machine-api-provider-nutanix",
@@ -1899,7 +1899,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 11.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:10:17.280581Z"
+      "last_updated": "2026-07-22T22:53:41.638250Z"
     },
     {
       "name": "machine-api-provider-openstack",
@@ -1917,7 +1917,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:11:35.474646Z"
+      "last_updated": "2026-07-22T22:55:02.205556Z"
     },
     {
       "name": "machine-api-provider-powervs",
@@ -1935,7 +1935,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 11.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:13:03.552427Z"
+      "last_updated": "2026-07-22T22:56:33.630796Z"
     },
     {
       "name": "machine-config-operator",
@@ -1953,7 +1953,7 @@
       "coderabbit_first_review_count": 20,
       "coderabbit_first_review_pct": 40.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:15:24.087830Z"
+      "last_updated": "2026-07-22T22:58:56.589994Z"
     },
     {
       "name": "multus-admission-controller",
@@ -1971,7 +1971,7 @@
       "coderabbit_first_review_count": 4,
       "coderabbit_first_review_pct": 36.4,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:16:51.836346Z"
+      "last_updated": "2026-07-22T23:00:27.274339Z"
     },
     {
       "name": "multus-cni",
@@ -1989,7 +1989,7 @@
       "coderabbit_first_review_count": 26,
       "coderabbit_first_review_pct": 60.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:19:00.119739Z"
+      "last_updated": "2026-07-22T23:02:40.899084Z"
     },
     {
       "name": "multus-networkpolicy",
@@ -2007,7 +2007,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 7.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:20:56.923484Z"
+      "last_updated": "2026-07-22T23:04:42.839223Z"
     },
     {
       "name": "network-metrics-daemon",
@@ -2025,7 +2025,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:22:18.878898Z"
+      "last_updated": "2026-07-22T23:06:08.018042Z"
     },
     {
       "name": "network-tools",
@@ -2043,7 +2043,7 @@
       "coderabbit_first_review_count": 14,
       "coderabbit_first_review_pct": 58.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:23:58.887999Z"
+      "last_updated": "2026-07-22T23:07:52.389263Z"
     },
     {
       "name": "node_exporter",
@@ -2061,7 +2061,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "config_no_reviews",
-      "last_updated": "2026-07-22T12:25:17.525990Z"
+      "last_updated": "2026-07-22T23:09:14.291852Z"
     },
     {
       "name": "oauth-apiserver",
@@ -2079,7 +2079,7 @@
       "coderabbit_first_review_count": 8,
       "coderabbit_first_review_pct": 21.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:27:12.995674Z"
+      "last_updated": "2026-07-22T23:11:11.388120Z"
     },
     {
       "name": "oauth-proxy",
@@ -2097,7 +2097,7 @@
       "coderabbit_first_review_count": 4,
       "coderabbit_first_review_pct": 28.6,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:28:55.131146Z"
+      "last_updated": "2026-07-22T23:12:56.677208Z"
     },
     {
       "name": "oauth-server",
@@ -2115,7 +2115,7 @@
       "coderabbit_first_review_count": 6,
       "coderabbit_first_review_pct": 17.6,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:30:42.597896Z"
+      "last_updated": "2026-07-22T23:14:47.497546Z"
     },
     {
       "name": "oc",
@@ -2129,11 +2129,11 @@
       "has_config": true,
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 49,
-      "coderabbit_first_review_count": 21,
-      "coderabbit_first_review_pct": 42.9,
+      "coderabbit_pr_count": 50,
+      "coderabbit_first_review_count": 20,
+      "coderabbit_first_review_pct": 40.0,
       "category": "fully_active",
-      "last_updated": "2026-07-22T12:32:56.922840Z"
+      "last_updated": "2026-07-22T23:17:10.387685Z"
     },
     {
       "name": "openshift-apiserver",
@@ -2151,7 +2151,7 @@
       "coderabbit_first_review_count": 11,
       "coderabbit_first_review_pct": 25.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:35:00.180575Z"
+      "last_updated": "2026-07-22T23:19:19.111567Z"
     },
     {
       "name": "openshift-controller-manager",
@@ -2169,7 +2169,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 5.9,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:36:37.036627Z"
+      "last_updated": "2026-07-22T23:21:01.403581Z"
     },
     {
       "name": "openshift-state-metrics",
@@ -2187,7 +2187,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:37:53.675110Z"
+      "last_updated": "2026-07-22T23:22:21.957947Z"
     },
     {
       "name": "openstack-cinder-csi-driver-operator",
@@ -2205,7 +2205,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:39:12.450442Z"
+      "last_updated": "2026-07-22T23:23:44.328776Z"
     },
     {
       "name": "operator-framework-olm",
@@ -2219,11 +2219,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 34,
+      "coderabbit_pr_count": 33,
       "coderabbit_first_review_count": 11,
-      "coderabbit_first_review_pct": 32.4,
+      "coderabbit_first_review_pct": 33.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:40:41.398393Z"
+      "last_updated": "2026-07-22T23:25:16.051352Z"
     },
     {
       "name": "operator-framework-rukpak",
@@ -2241,7 +2241,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 27.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:42:01.421141Z"
+      "last_updated": "2026-07-22T23:26:40.870868Z"
     },
     {
       "name": "origin",
@@ -2256,10 +2256,10 @@
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 49,
-      "coderabbit_first_review_count": 20,
-      "coderabbit_first_review_pct": 40.8,
+      "coderabbit_first_review_count": 21,
+      "coderabbit_first_review_pct": 42.9,
       "category": "fully_active",
-      "last_updated": "2026-07-22T12:44:19.965035Z"
+      "last_updated": "2026-07-22T23:29:04.818324Z"
     },
     {
       "name": "ovirt-csi-driver",
@@ -2309,11 +2309,11 @@
       "has_config": true,
       "config_file": ".coderabbit.yml",
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 37,
+      "coderabbit_pr_count": 36,
       "coderabbit_first_review_count": 20,
-      "coderabbit_first_review_pct": 54.1,
+      "coderabbit_first_review_pct": 55.6,
       "category": "fully_active",
-      "last_updated": "2026-07-22T12:47:54.836668Z"
+      "last_updated": "2026-07-22T23:32:47.738625Z"
     },
     {
       "name": "platform-operators",
@@ -2331,7 +2331,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T12:49:12.957580Z"
+      "last_updated": "2026-07-22T23:34:08.112552Z"
     },
     {
       "name": "prom-label-proxy",
@@ -2349,7 +2349,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 25.0,
       "category": "fully_active",
-      "last_updated": "2026-07-22T12:50:27.831662Z"
+      "last_updated": "2026-07-22T23:35:26.004380Z"
     },
     {
       "name": "prometheus",
@@ -2364,10 +2364,10 @@
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 29,
-      "coderabbit_first_review_count": 11,
-      "coderabbit_first_review_pct": 37.9,
+      "coderabbit_first_review_count": 10,
+      "coderabbit_first_review_pct": 34.5,
       "category": "fully_active",
-      "last_updated": "2026-07-22T12:51:50.505276Z"
+      "last_updated": "2026-07-22T23:36:47.159797Z"
     },
     {
       "name": "prometheus-alertmanager",
@@ -2381,11 +2381,11 @@
       "has_config": true,
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 8,
+      "coderabbit_pr_count": 9,
       "coderabbit_first_review_count": 2,
-      "coderabbit_first_review_pct": 25.0,
+      "coderabbit_first_review_pct": 22.2,
       "category": "fully_active",
-      "last_updated": "2026-07-22T12:53:07.532341Z"
+      "last_updated": "2026-07-22T23:38:09.505757Z"
     },
     {
       "name": "prometheus-operator",
@@ -2403,7 +2403,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 12.5,
       "category": "fully_active",
-      "last_updated": "2026-07-22T12:54:27.030951Z"
+      "last_updated": "2026-07-22T23:39:30.983654Z"
     },
     {
       "name": "route-controller-manager",
@@ -2421,7 +2421,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 8.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:55:47.184817Z"
+      "last_updated": "2026-07-22T23:40:51.617910Z"
     },
     {
       "name": "route-override-cni",
@@ -2439,7 +2439,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 20.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:57:22.040451Z"
+      "last_updated": "2026-07-22T23:42:29.859024Z"
     },
     {
       "name": "router",
@@ -2453,11 +2453,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 45,
+      "coderabbit_pr_count": 46,
       "coderabbit_first_review_count": 6,
-      "coderabbit_first_review_pct": 13.3,
+      "coderabbit_first_review_pct": 13.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T12:59:37.735016Z"
+      "last_updated": "2026-07-22T23:44:48.033812Z"
     },
     {
       "name": "sdn",
@@ -2475,7 +2475,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:01:02.098885Z"
+      "last_updated": "2026-07-22T23:46:13.445052Z"
     },
     {
       "name": "service-ca-operator",
@@ -2493,7 +2493,7 @@
       "coderabbit_first_review_count": 15,
       "coderabbit_first_review_pct": 37.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:02:50.263939Z"
+      "last_updated": "2026-07-22T23:48:04.040052Z"
     },
     {
       "name": "telemeter",
@@ -2511,7 +2511,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 6.7,
       "category": "fully_active",
-      "last_updated": "2026-07-22T13:04:14.402554Z"
+      "last_updated": "2026-07-22T23:49:29.447230Z"
     },
     {
       "name": "thanos",
@@ -2529,7 +2529,7 @@
       "coderabbit_first_review_count": 5,
       "coderabbit_first_review_pct": 22.7,
       "category": "fully_active",
-      "last_updated": "2026-07-22T13:05:38.460106Z"
+      "last_updated": "2026-07-22T23:50:53.391505Z"
     },
     {
       "name": "vmware-vsphere-csi-driver",
@@ -2547,7 +2547,7 @@
       "coderabbit_first_review_count": 12,
       "coderabbit_first_review_pct": 57.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:07:02.998918Z"
+      "last_updated": "2026-07-22T23:52:15.672280Z"
     },
     {
       "name": "vmware-vsphere-csi-driver-operator",
@@ -2561,11 +2561,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 15,
+      "coderabbit_pr_count": 16,
       "coderabbit_first_review_count": 4,
-      "coderabbit_first_review_pct": 26.7,
+      "coderabbit_first_review_pct": 25.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:08:36.222296Z"
+      "last_updated": "2026-07-22T23:53:49.006883Z"
     },
     {
       "name": "vsphere-problem-detector",
@@ -2583,7 +2583,7 @@
       "coderabbit_first_review_count": 6,
       "coderabbit_first_review_pct": 40.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:10:02.844821Z"
+      "last_updated": "2026-07-22T23:55:15.103293Z"
     },
     {
       "name": "whereabouts-cni",
@@ -2601,7 +2601,7 @@
       "coderabbit_first_review_count": 10,
       "coderabbit_first_review_pct": 58.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:12:00.934371Z"
+      "last_updated": "2026-07-22T23:57:14.906752Z"
     },
     {
       "name": "operator-marketplace",
@@ -2619,7 +2619,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0,
       "category": "not_configured",
-      "last_updated": "2026-07-22T13:13:23.475889Z"
+      "last_updated": "2026-07-22T23:58:39.611393Z"
     },
     {
       "name": "baremetal-operator",
@@ -2637,7 +2637,7 @@
       "coderabbit_first_review_count": 14,
       "coderabbit_first_review_pct": 37.8,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:15:10.007577Z"
+      "last_updated": "2026-07-23T00:00:28.353637Z"
     },
     {
       "name": "cloud-provider-powervs",
@@ -2655,7 +2655,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 23.1,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:16:33.319238Z"
+      "last_updated": "2026-07-23T00:01:54.418219Z"
     },
     {
       "name": "cluster-api-provider-baremetal",
@@ -2673,7 +2673,7 @@
       "coderabbit_first_review_count": 2,
       "coderabbit_first_review_pct": 22.2,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:17:49.919155Z"
+      "last_updated": "2026-07-23T00:03:15.475245Z"
     },
     {
       "name": "cluster-baremetal-operator",
@@ -2687,11 +2687,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 42,
-      "coderabbit_first_review_count": 20,
-      "coderabbit_first_review_pct": 47.6,
+      "coderabbit_pr_count": 41,
+      "coderabbit_first_review_count": 19,
+      "coderabbit_first_review_pct": 46.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:19:47.173427Z"
+      "last_updated": "2026-07-23T00:05:13.689773Z"
     },
     {
       "name": "hypershift",
@@ -2706,10 +2706,10 @@
       "config_file": ".coderabbit.yaml",
       "has_coderabbit_reviews": true,
       "coderabbit_pr_count": 50,
-      "coderabbit_first_review_count": 17,
-      "coderabbit_first_review_pct": 34.0,
+      "coderabbit_first_review_count": 16,
+      "coderabbit_first_review_pct": 32.0,
       "category": "fully_active",
-      "last_updated": "2026-07-22T13:22:07.713673Z"
+      "last_updated": "2026-07-23T00:07:44.006027Z"
     },
     {
       "name": "image-customization-controller",
@@ -2727,7 +2727,7 @@
       "coderabbit_first_review_count": 8,
       "coderabbit_first_review_pct": 61.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:23:35.932027Z"
+      "last_updated": "2026-07-23T00:09:15.881596Z"
     },
     {
       "name": "installer",
@@ -2745,7 +2745,7 @@
       "coderabbit_first_review_count": 14,
       "coderabbit_first_review_pct": 29.8,
       "category": "fully_active",
-      "last_updated": "2026-07-22T13:25:52.142871Z"
+      "last_updated": "2026-07-23T00:11:38.524612Z"
     },
     {
       "name": "ironic-agent-image",
@@ -2759,11 +2759,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 28,
+      "coderabbit_pr_count": 29,
       "coderabbit_first_review_count": 5,
-      "coderabbit_first_review_pct": 17.9,
+      "coderabbit_first_review_pct": 17.2,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:27:14.701341Z"
+      "last_updated": "2026-07-23T00:13:06.567823Z"
     },
     {
       "name": "ironic-image",
@@ -2777,11 +2777,11 @@
       "has_config": false,
       "config_file": null,
       "has_coderabbit_reviews": true,
-      "coderabbit_pr_count": 29,
+      "coderabbit_pr_count": 30,
       "coderabbit_first_review_count": 14,
-      "coderabbit_first_review_pct": 48.3,
+      "coderabbit_first_review_pct": 46.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:28:48.430214Z"
+      "last_updated": "2026-07-23T00:14:46.362341Z"
     },
     {
       "name": "ironic-rhcos-downloader",
@@ -2799,7 +2799,7 @@
       "coderabbit_first_review_count": 1,
       "coderabbit_first_review_pct": 16.7,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:30:07.501106Z"
+      "last_updated": "2026-07-23T00:16:08.394310Z"
     },
     {
       "name": "ironic-static-ip-manager",
@@ -2817,7 +2817,7 @@
       "coderabbit_first_review_count": 0,
       "coderabbit_first_review_pct": 0.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:31:23.927605Z"
+      "last_updated": "2026-07-23T00:17:27.022307Z"
     },
     {
       "name": "machine-api-operator",
@@ -2835,7 +2835,7 @@
       "coderabbit_first_review_count": 11,
       "coderabbit_first_review_pct": 24.4,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:33:36.415205Z"
+      "last_updated": "2026-07-23T00:19:43.532788Z"
     },
     {
       "name": "machine-os-images",
@@ -2853,7 +2853,7 @@
       "coderabbit_first_review_count": 3,
       "coderabbit_first_review_pct": 11.5,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:34:56.277699Z"
+      "last_updated": "2026-07-23T00:21:07.191618Z"
     },
     {
       "name": "must-gather",
@@ -2871,7 +2871,7 @@
       "coderabbit_first_review_count": 14,
       "coderabbit_first_review_pct": 48.3,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:36:40.760007Z"
+      "last_updated": "2026-07-23T00:22:56.253615Z"
     },
     {
       "name": "oc-mirror",
@@ -2889,7 +2889,7 @@
       "coderabbit_first_review_count": 17,
       "coderabbit_first_review_pct": 34.0,
       "category": "reviewing_no_config",
-      "last_updated": "2026-07-22T13:38:59.101304Z"
+      "last_updated": "2026-07-23T00:25:18.948616Z"
     }
   ]
 }
